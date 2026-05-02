@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$KOKO — Kairoku World</title>
+
+<!-- Primary Meta -->
+<meta name="description" content="$KOKO — The First AI Agent on Solana. A lore-driven memecoin universe. The regime thought they had won. They were wrong.">
+<meta name="keywords" content="KOKO, Kairoku World, Solana, memecoin, AI agent, $KOKO, airdrop, presale">
+<meta name="author" content="Kairoku World">
+<link rel="canonical" href="https://kairokuworld.xyz">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kairokuworld.xyz">
+<meta property="og:title" content="$KOKO — Kairoku World | The First AI Agent on Solana">
+<meta property="og:description" content="The regime thought they had won. They were wrong. $KOKO is the first autonomous AI agent on Solana — a lore-driven memecoin universe built on the Nihonkai Forest.">
+<meta property="og:image" content="https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png">
+<meta property="og:site_name" content="Kairoku World">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KokoKairoku">
+<meta name="twitter:creator" content="@KokoKairoku">
+<meta name="twitter:title" content="$KOKO — Kairoku World | The First AI Agent on Solana">
+<meta name="twitter:description" content="The regime thought they had won. They were wrong. Shadow Phase presale open now. 888,888,888 $KOKO on Solana.">
+<meta name="twitter:image" content="https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>影</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #060605;
+  --bg2:      #0c0c0a;
+  --surface:  #101010;
+  --surface2: #161614;
+  --border:   rgba(255,255,255,0.05);
+  --border2:  rgba(255,255,255,0.09);
+  --border3:  rgba(255,255,255,0.15);
+  --text:     #dedad2;
+  --muted:    #5a5a56;
+  --silver:   #8a8a84;
+  --accent:   #c0bdb4;
+  --white:    #eeeae2;
+  --gold:     #c8a855;
+  --gold2:    #e0c070;
+  --gold3:    #f0d898;
+  --dim:      #252520;
+  --red:      #8a3030;
+}
+
+html { background: var(--bg); color: var(--text); font-family: 'Space Mono', monospace; scroll-behavior: smooth; }
+body { min-height: 100vh; overflow-x: hidden; cursor: default; }
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.5;
+}
+
+/* ── LAYOUT ── */
+.wrap { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 28px; }
+section { position: relative; z-index: 1; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
+@keyframes fadeIn   { from { opacity:0 } to { opacity:1 } }
+@keyframes floatY   { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-12px) } }
+@keyframes scanline { 0% { top:-20% } 100% { top:120% } }
+@keyframes glowPulse{ 0%,100% { opacity:0.4 } 50% { opacity:0.9 } }
+@keyframes borderAnim { 0%,100% { border-color:rgba(200,168,85,0.2) } 50% { border-color:rgba(200,168,85,0.5) } }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  border-bottom: 0.5px solid var(--border);
+  background: rgba(6,6,5,0.88);
+  backdrop-filter: blur(20px);
+}
+.nav-inner {
+  max-width: 900px; margin: 0 auto; padding: 0 28px;
+  height: 56px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-mark {
+  width: 30px; height: 30px; border: 0.5px solid var(--border3); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Shippori Mincho', serif; font-size: 14px; color: var(--gold);
+}
+.nav-brand { font-family: 'Noto Serif JP', serif; font-size: 13px; color: var(--white); letter-spacing: 0.06em; }
+.nav-brand span { color: var(--muted); }
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a { font-size: 10px; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta {
+  font-size: 10px; padding: 7px 16px; border: 0.5px solid var(--gold);
+  border-radius: 3px; color: var(--gold); background: transparent;
+  cursor: pointer; letter-spacing: 0.1em; text-decoration: none;
+  transition: all 0.2s; text-transform: uppercase;
+}
+.nav-cta:hover { background: rgba(200,168,85,0.1); }
+.nav-mobile-cta { display: none; }
+.nav-desktop-cta { display: flex; gap: 10px; align-items: center; }
+
+/* ── HERO ── */
+.hero {
+  padding: 130px 0 0;
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; position: relative; overflow: hidden;
+}
+.hero-grid-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(200,168,85,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,168,85,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-scanline {
+  position: absolute; left: 0; right: 0; height: 2px;
+  background: linear-gradient(to right, transparent, rgba(200,168,85,0.08), transparent);
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+}
+.hero-glow {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -60%);
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,168,85,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: 9px; letter-spacing: 0.22em; color: var(--muted);
+  text-transform: uppercase; margin-bottom: 24px;
+  animation: fadeUp 1s ease 0.1s both;
+}
+.hero-kanji {
+  font-family: 'Shippori Mincho', serif; font-size: 96px; font-weight: 800;
+  color: transparent;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold3) 50%, var(--gold) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  line-height: 1; margin-bottom: 8px;
+  animation: fadeUp 1.2s ease both;
+  text-shadow: none;
+  filter: drop-shadow(0 0 40px rgba(200,168,85,0.3));
+}
+.hero-title {
+  font-family: 'Noto Serif JP', serif; font-size: 13px; font-weight: 300;
+  color: var(--silver); letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 40px; animation: fadeUp 1s ease 0.2s both;
+}
+.hero-image-wrap {
+  position: relative; width: 360px; max-width: 90vw;
+  animation: fadeUp 1.2s ease 0.3s both;
+  margin: 0 auto 0;
+}
+.hero-image-wrap img {
+  width: 100%; animation: floatY 6s ease-in-out infinite;
+  filter: drop-shadow(0 20px 60px rgba(200,168,85,0.15)) drop-shadow(0 0 120px rgba(200,168,85,0.08));
+}
+.hero-image-ring {
+  position: absolute; inset: -20px; border-radius: 50%;
+  border: 0.5px solid rgba(200,168,85,0.1);
+  animation: glowPulse 4s ease infinite;
+}
+.hero-quote {
+  font-family: 'Noto Serif JP', serif; font-size: 15px; font-weight: 300;
+  font-style: italic; color: var(--silver); line-height: 1.8;
+  max-width: 500px; margin: 0 auto 40px;
+  animation: fadeUp 1s ease 0.4s both;
+}
+.hero-quote::before, .hero-quote::after { content: '"'; color: var(--gold); font-style: normal; }
+.hero-cta-row {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 1s ease 0.5s both; margin-bottom: 60px;
+}
+.btn-primary {
+  font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 14px 32px;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+  border: none; border-radius: 3px; color: #060605;
+  cursor: pointer; text-decoration: none; font-weight: 700;
+  transition: all 0.25s;
+  box-shadow: 0 0 40px rgba(200,168,85,0.2);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 40px rgba(200,168,85,0.35); }
+.btn-ghost {
+  font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 14px 32px;
+  background: transparent; border: 0.5px solid var(--border3);
+  border-radius: 3px; color: var(--accent);
+  cursor: pointer; text-decoration: none; transition: all 0.25s;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); background: rgba(200,168,85,0.05); }
+.hero-scroll {
+  font-size: 9px; letter-spacing: 0.16em; color: var(--muted);
+  text-transform: uppercase; animation: fadeUp 1s ease 0.7s both;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  margin-bottom: 40px;
+}
+.hero-scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent); }
+
+/* ── SECTION COMMON ── */
+.section-label {
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 16px; display: flex; align-items: center; gap: 14px;
+}
+.section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border2); }
+.section-title {
+  font-family: 'Noto Serif JP', serif; font-size: 36px; font-weight: 600;
+  color: var(--white); line-height: 1.2; margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 12px; color: var(--silver); line-height: 1.9; margin-bottom: 48px;
+  max-width: 560px;
+}
+
+/* ── DIVIDER ── */
+.divider { width: 1px; height: 80px; background: linear-gradient(to bottom, transparent, var(--border3), transparent); margin: 0 auto; }
+.h-divider { height: 0.5px; background: var(--border); margin: 80px 0; }
+
+/* ── STATS BAND ── */
+.stats-band {
+  border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);
+  padding: 32px 0; margin: 0 0 100px;
+}
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.stat-item { text-align: center; padding: 0 20px; border-right: 0.5px solid var(--border); }
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Noto Serif JP', serif; font-size: 28px; font-weight: 600;
+  color: var(--white); margin-bottom: 6px;
+}
+.stat-num.gold { color: var(--gold); }
+.stat-label { font-size: 9px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+
+/* ── LORE SECTION ── */
+.lore { padding: 100px 0; }
+.lore-chapters { display: flex; flex-direction: column; gap: 0; margin-top: 60px; }
+.lore-chapter {
+  display: grid; grid-template-columns: 80px 1fr; gap: 0;
+  border-top: 0.5px solid var(--border); padding: 40px 0;
+  transition: background 0.3s;
+}
+.lore-chapter:hover { background: rgba(255,255,255,0.01); }
+.lore-chapter-num {
+  font-size: 10px; color: var(--muted); letter-spacing: 0.1em;
+  padding-top: 4px;
+}
+.lore-chapter-body {}
+.lore-chapter-title {
+  font-family: 'Noto Serif JP', serif; font-size: 20px; font-weight: 400;
+  color: var(--white); margin-bottom: 12px; letter-spacing: 0.02em;
+}
+.lore-chapter-text { font-size: 12px; color: var(--silver); line-height: 2; max-width: 580px; }
+.lore-quote {
+  border-left: 1.5px solid var(--gold); padding-left: 20px; margin: 32px 0;
+  font-family: 'Noto Serif JP', serif; font-size: 14px; font-style: italic;
+  color: var(--silver); line-height: 1.8;
+}
+
+/* ── CHARACTERS ── */
+.characters { padding: 100px 0; }
+.chars-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 60px; }
+.char-card {
+  background: var(--surface); border: 0.5px solid var(--border);
+  padding: 40px 32px; position: relative; overflow: hidden;
+  transition: border-color 0.3s, background 0.3s;
+  cursor: default;
+}
+.char-card:hover { border-color: var(--border3); background: var(--surface2); }
+.char-card.featured {
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+}
+.char-card-bg {
+  position: absolute; top: 0; right: 0; bottom: 0; width: 40%;
+  pointer-events: none; opacity: 0.04;
+  font-family: 'Shippori Mincho', serif; font-size: 160px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center; color: var(--gold);
+  overflow: hidden;
+}
+.char-tag {
+  font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.char-tag-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+.char-name {
+  font-family: 'Noto Serif JP', serif; font-size: 28px; font-weight: 600;
+  color: var(--white); margin-bottom: 6px; letter-spacing: 0.02em;
+}
+.char-japanese { font-size: 11px; color: var(--muted); margin-bottom: 20px; letter-spacing: 0.08em; }
+.char-desc { font-size: 12px; color: var(--silver); line-height: 1.9; margin-bottom: 20px; }
+.char-traits { display: flex; flex-wrap: wrap; gap: 8px; }
+.char-trait {
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  border: 0.5px solid var(--border2); border-radius: 2px;
+  padding: 4px 10px; color: var(--muted);
+}
+.char-trait.gold { border-color: rgba(200,168,85,0.3); color: var(--gold); }
+.char-image { display: flex; align-items: center; justify-content: center; }
+.char-image img { max-width: 220px; width: 100%; filter: drop-shadow(0 10px 40px rgba(200,168,85,0.1)); }
+.char-image-placeholder {
+  width: 180px; height: 220px;
+  background: var(--dim); border: 0.5px solid var(--border2);
+  border-radius: 4px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Shippori Mincho', serif; font-size: 48px; color: var(--muted);
+}
+.char-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); margin-top: 16px;
+}
+.char-status-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); }
+.char-status-dot.active { background: #5a9a5a; box-shadow: 0 0 6px rgba(90,154,90,0.8); animation: glowPulse 2s ease infinite; }
+.char-status-dot.unknown { background: var(--red); }
+
+/* ── FACTIONS ── */
+.factions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 40px; }
+.faction-card {
+  border: 0.5px solid var(--border); background: var(--surface);
+  padding: 28px; transition: all 0.25s;
+}
+.faction-card:hover { border-color: var(--border2); }
+.faction-name {
+  font-family: 'Noto Serif JP', serif; font-size: 16px; color: var(--white);
+  margin-bottom: 8px;
+}
+.faction-desc { font-size: 11px; color: var(--silver); line-height: 1.8; }
+
+/* ── TOKENOMICS ── */
+.tokenomics { padding: 100px 0; }
+.token-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 60px; }
+.token-alloc { display: flex; flex-direction: column; gap: 0; }
+.alloc-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 0; border-bottom: 0.5px solid var(--border);
+  transition: background 0.2s;
+}
+.alloc-row:hover { background: rgba(255,255,255,0.01); }
+.alloc-bar-wrap { width: 80px; height: 2px; background: var(--dim); border-radius: 1px; flex-shrink: 0; }
+.alloc-bar { height: 100%; border-radius: 1px; background: var(--gold); }
+.alloc-pct { font-size: 18px; font-weight: 700; color: var(--white); min-width: 44px; }
+.alloc-pct.dim { color: var(--muted); }
+.alloc-info {}
+.alloc-name { font-size: 12px; color: var(--accent); margin-bottom: 3px; }
+.alloc-desc { font-size: 10px; color: var(--muted); line-height: 1.5; }
+.token-meta { display: flex; flex-direction: column; gap: 20px; }
+.meta-card {
+  background: var(--surface); border: 0.5px solid var(--border);
+  padding: 24px; border-radius: 4px;
+}
+.meta-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.meta-value { font-family: 'Noto Serif JP', serif; font-size: 20px; color: var(--white); }
+.meta-value.gold { color: var(--gold); }
+.meta-sub { font-size: 10px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+.vest-timeline {
+  background: var(--surface); border: 0.5px solid var(--border);
+  padding: 24px; border-radius: 4px;
+}
+.vest-row { display: flex; justify-content: space-between; font-size: 11px; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
+.vest-row:last-child { border-bottom: none; }
+.vest-row span:first-child { color: var(--silver); }
+.vest-row span:last-child { color: var(--accent); }
+
+/* ── PRESALE ── */
+.presale { padding: 100px 0; }
+.phases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 40px 0; }
+.phase-card {
+  background: var(--surface); border: 0.5px solid var(--border);
+  padding: 24px 16px; text-align: center; position: relative;
+  transition: all 0.25s;
+}
+.phase-card.active {
+  border-color: rgba(200,168,85,0.4); background: var(--surface2);
+  animation: borderAnim 3s ease infinite;
+}
+.phase-card.active::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.phase-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--dim); margin: 0 auto 14px; }
+.phase-dot.active { background: var(--gold); box-shadow: 0 0 10px rgba(200,168,85,0.6); animation: glowPulse 2s ease infinite; }
+.phase-name { font-family: 'Noto Serif JP', serif; font-size: 13px; color: var(--accent); margin-bottom: 10px; }
+.phase-bonus { font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+.phase-bonus.gold { color: var(--gold); }
+.phase-status {
+  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 2px;
+  color: var(--muted); border: 0.5px solid var(--border2);
+}
+.phase-status.open { color: var(--gold); border-color: rgba(200,168,85,0.3); background: rgba(200,168,85,0.06); }
+
+.presale-box {
+  background: var(--surface); border: 0.5px solid var(--border2);
+  padding: 48px; position: relative; overflow: hidden;
+}
+.presale-box::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.presale-box-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.wallet-display {
+  background: var(--bg2); border: 0.5px solid var(--border2);
+  padding: 20px; border-radius: 4px; margin: 20px 0;
+}
+.wallet-label { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.wallet-address {
+  font-family: 'Space Mono', monospace; font-size: 11px; color: var(--gold);
+  word-break: break-all; line-height: 1.8; cursor: pointer;
+  transition: color 0.2s;
+}
+.wallet-address:hover { color: var(--gold3); }
+.copy-hint { font-size: 9px; color: var(--muted); margin-top: 8px; cursor: pointer; transition: color 0.2s; }
+.copy-hint:hover { color: var(--gold); }
+.presale-steps { display: flex; flex-direction: column; gap: 0; }
+.presale-step { display: flex; gap: 16px; padding: 16px 0; border-bottom: 0.5px solid var(--border); }
+.presale-step:last-child { border-bottom: none; }
+.step-num { font-size: 10px; color: var(--muted); min-width: 20px; padding-top: 2px; }
+.step-content {}
+.step-title { font-size: 12px; color: var(--accent); margin-bottom: 4px; }
+.step-desc { font-size: 11px; color: var(--muted); line-height: 1.7; }
+.step-link { color: var(--gold); text-decoration: none; }
+.step-link:hover { color: var(--gold3); }
+.warn-box {
+  background: rgba(138,48,48,0.08); border: 0.5px solid rgba(138,48,48,0.3);
+  padding: 16px 20px; margin-top: 20px; font-size: 11px; color: var(--silver);
+  line-height: 1.7;
+}
+.warn-box strong { color: #c06060; }
+
+/* ── AIRDROP ── */
+.airdrop { padding: 100px 0; }
+.airdrop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 40px 0; }
+.airdrop-card {
+  background: var(--surface); border: 0.5px solid var(--border); padding: 32px;
+}
+.airdrop-icon { font-size: 28px; margin-bottom: 16px; }
+.airdrop-card-title { font-family: 'Noto Serif JP', serif; font-size: 16px; color: var(--white); margin-bottom: 10px; }
+.airdrop-card-desc { font-size: 11px; color: var(--silver); line-height: 1.8; }
+
+.tasks-table { width: 100%; border-collapse: collapse; margin: 40px 0; }
+.tasks-table th {
+  font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); text-align: left; padding: 10px 16px;
+  border-bottom: 0.5px solid var(--border);
+}
+.tasks-table td {
+  font-size: 12px; padding: 16px 16px;
+  border-bottom: 0.5px solid var(--border); vertical-align: middle;
+}
+.tasks-table tr:last-child td { border-bottom: none; }
+.tasks-table tr:hover td { background: rgba(255,255,255,0.01); }
+.td-task { color: var(--accent); }
+.td-pts { color: var(--gold); font-weight: 700; }
+.td-note { color: var(--muted); font-size: 10px; }
+
+.conversion-box {
+  background: var(--surface); border: 0.5px solid var(--border2);
+  padding: 36px; position: relative; overflow: hidden; margin: 40px 0;
+}
+.conversion-box::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(200,168,85,0.04), transparent 60%);
+  pointer-events: none;
+}
+.conversion-formula {
+  font-family: 'Noto Serif JP', serif; font-size: 22px; color: var(--white);
+  margin-bottom: 16px; line-height: 1.5;
+}
+.conversion-formula span { color: var(--gold); }
+.conversion-example { font-size: 11px; color: var(--silver); line-height: 1.9; }
+.conversion-example code { color: var(--gold2); background: rgba(200,168,85,0.08); padding: 1px 6px; border-radius: 2px; }
+
+.leaderboard-bonus { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 24px 0; }
+.lb-bonus-card {
+  background: var(--surface); border: 0.5px solid var(--border);
+  padding: 24px; text-align: center;
+}
+.lb-bonus-rank { font-size: 28px; margin-bottom: 8px; }
+.lb-bonus-mult { font-family: 'Noto Serif JP', serif; font-size: 20px; color: var(--gold); margin-bottom: 4px; }
+.lb-bonus-label { font-size: 9px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+
+/* ── ROADMAP ── */
+.roadmap { padding: 100px 0; }
+.roadmap-phases { display: flex; flex-direction: column; gap: 0; margin-top: 60px; }
+.roadmap-phase { display: grid; grid-template-columns: 200px 1fr; gap: 0; border-top: 0.5px solid var(--border); }
+.roadmap-phase-label {
+  padding: 40px 40px 40px 0;
+  font-family: 'Noto Serif JP', serif; font-size: 14px; color: var(--white);
+  position: relative;
+}
+.roadmap-phase-label::after {
+  content: ''; position: absolute; top: 0; right: 0; bottom: 0;
+  width: 0.5px; background: var(--border);
+}
+.roadmap-phase-sub { font-size: 10px; color: var(--muted); margin-top: 4px; letter-spacing: 0.06em; }
+.roadmap-phase-status {
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  margin-top: 12px; display: inline-flex; align-items: center; gap: 6px;
+}
+.roadmap-phase-status.current { color: var(--gold); }
+.roadmap-phase-status.upcoming { color: var(--muted); }
+.roadmap-items { padding: 40px 0 40px 40px; display: flex; flex-direction: column; gap: 12px; }
+.roadmap-item { display: flex; align-items: flex-start; gap: 12px; }
+.roadmap-item-dot {
+  width: 16px; height: 16px; border: 0.5px solid var(--border2);
+  border-radius: 2px; flex-shrink: 0; margin-top: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px;
+}
+.roadmap-item-dot.done { border-color: var(--gold); background: rgba(200,168,85,0.1); color: var(--gold); }
+.roadmap-item-dot.pending { color: transparent; }
+.roadmap-item-text { font-size: 12px; color: var(--silver); line-height: 1.6; }
+.roadmap-item-text.done { color: var(--accent); }
+
+/* ── FAQ ── */
+.faq { padding: 100px 0; }
+.faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
+.faq-item { border-top: 0.5px solid var(--border); }
+.faq-q {
+  width: 100%; background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 0; text-align: left; gap: 20px;
+}
+.faq-q-text { font-size: 13px; color: var(--accent); font-family: 'Noto Serif JP', serif; font-weight: 400; }
+.faq-chevron { color: var(--muted); font-size: 14px; flex-shrink: 0; transition: transform 0.25s; }
+.faq-item.open .faq-chevron { transform: rotate(45deg); }
+.faq-a {
+  font-size: 12px; color: var(--silver); line-height: 1.9;
+  max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.25s;
+  padding: 0;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-bottom: 24px; }
+
+/* ── SOCIALS ── */
+.socials { padding: 80px 0; border-top: 0.5px solid var(--border); text-align: center; }
+.socials-title { font-family: 'Noto Serif JP', serif; font-size: 28px; color: var(--white); margin-bottom: 12px; }
+.socials-sub { font-size: 12px; color: var(--silver); margin-bottom: 40px; }
+.social-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.social-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 0.5px solid var(--border2); padding: 12px 24px;
+  color: var(--silver); text-decoration: none; font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.25s;
+  border-radius: 2px;
+}
+.social-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(200,168,85,0.04); }
+.warning-strip {
+  font-size: 10px; color: var(--muted); letter-spacing: 0.08em;
+  border-top: 0.5px solid var(--border); padding: 20px 0;
+  text-align: center; line-height: 1.8;
+}
+.warning-strip strong { color: #c06060; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 0.5px solid var(--border); padding: 32px 0;
+  font-size: 10px; color: var(--muted); letter-spacing: 0.06em;
+}
+.footer-inner {
+  max-width: 900px; margin: 0 auto; padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.footer-brand { font-family: 'Noto Serif JP', serif; font-size: 12px; color: var(--silver); }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--surface2); border: 0.5px solid var(--gold);
+  padding: 10px 24px; font-size: 11px; color: var(--gold2);
+  border-radius: 3px; z-index: 999; opacity: 0;
+  transition: all 0.3s; pointer-events: none; letter-spacing: 0.08em;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── MOBILE ── */
+@media (max-width: 700px) {
+  .nav-links { display: none; }
+  .nav-desktop-cta { display: none; }
+  .nav-mobile-cta { display: flex; align-items: center; gap: 10px; }
+  .hero-kanji { font-size: 64px; }
+  .section-title { font-size: 26px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(2) { border-right: none; }
+  .chars-grid { grid-template-columns: 1fr; }
+  .char-card.featured { grid-template-columns: 1fr; }
+  .char-image { display: none; }
+  .token-grid { grid-template-columns: 1fr; }
+  .phases-grid { grid-template-columns: repeat(2, 1fr); }
+  .presale-box-grid { grid-template-columns: 1fr; gap: 32px; }
+  .airdrop-grid { grid-template-columns: 1fr; }
+  .factions-grid { grid-template-columns: 1fr; }
+  .roadmap-phase { grid-template-columns: 1fr; }
+  .roadmap-phase-label { padding: 24px 0 0; }
+  .roadmap-phase-label::after { display: none; }
+  .roadmap-items { padding: 16px 0 24px; }
+  .leaderboard-bonus { grid-template-columns: 1fr; }
+  .hero-cta-row { flex-direction: column; align-items: center; }
+  .wrap { padding: 0 18px; }
+  .presale-box { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-mark">影</div>
+      <span class="nav-brand">KOKO <span>| Kairoku World</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#lore">Lore</a>
+      <a href="#characters">Characters</a>
+      <a href="#tokenomics">Token</a>
+      <a href="/presale">Presale</a>
+      <a href="#airdrop">Airdrop</a>
+      <a href="#roadmap">Roadmap</a>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <div class="nav-desktop-cta">
+        <a class="btn-ghost nav-cta" href="/airdrop" target="_blank">Start Airdrop</a>
+        <a class="btn-ghost nav-cta" href="/presale">Buy $KOKO</a>
+      </div>
+      <div class="nav-mobile-cta">
+        <a class="btn-ghost nav-cta" href="/airdrop" target="_blank" style="padding:6px 12px;font-size:9px">Airdrop</a>
+        <a class="btn-ghost nav-cta" href="/presale" style="padding:6px 12px;font-size:9px">Buy</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-scanline"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center">
+    <div class="hero-eyebrow">The First AI Agent on Solana</div>
+    <div class="hero-kanji">影</div>
+    <div class="hero-title">Kairoku World — $KOKO</div>
+    <div class="hero-image-wrap" id="hero-image-wrap">
+      <div class="hero-image-ring"></div>
+      <img id="hero-rotating-img" src="https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png" alt="Koko — The Small Cat">
+    </div>
+    <div id="hero-char-label" style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-top:12px;margin-bottom:4px;transition:opacity 0.4s;animation:fadeUp 1s ease 0.35s both">Koko — The Small Cat</div>
+    <div class="hero-quote" style="margin-top:32px">The regime thought they had won. They were wrong.</div>
+    <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;animation:fadeUp 1s ease 0.45s both">Shadow Phase is live — 30% bonus active</div>
+    <div class="hero-cta-row">
+      <a class="btn-primary" href="/airdrop" target="_blank">Start Airdrop</a>
+      <a class="btn-primary" href="/presale">Buy $KOKO</a>
+      <a class="btn-ghost" href="#lore">Read the Lore</a>
+    </div>
+    <div style="font-size:10px;color:var(--muted);letter-spacing:0.08em;margin-top:-44px;margin-bottom:20px;animation:fadeUp 1s ease 0.6s both">Secure checkout via Helio (MoonPay). Card and crypto accepted.</div>
+    <div style="font-size:10px;color:var(--silver);letter-spacing:0.08em;margin-bottom:16px;animation:fadeUp 1s ease 0.65s both">Early participants are already accumulating $KOKO.</div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      Scroll
+    </div>
+  </div>
+</section>
+
+<!-- PRESALE -->
+<section class="presale" id="presale">
+  <div class="wrap">
+    <div class="section-label">Presale</div>
+    <h2 class="section-title">Shadow Phase — Open Now</h2>
+    <p class="section-sub">Four phases, each tied to a chapter in Koko's lore. The earliest believers earn the most.</p>
+
+    <div class="phases-grid">
+      <div class="phase-card active">
+        <div class="phase-dot active"></div>
+        <div class="phase-name">Shadow Phase</div>
+        <div class="phase-bonus gold">+30%</div>
+        <div class="phase-status open">Open</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-dot"></div>
+        <div class="phase-name">Emergence Phase</div>
+        <div class="phase-bonus">+20%</div>
+        <div class="phase-status">Upcoming</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-dot"></div>
+        <div class="phase-name">Reckoning Phase</div>
+        <div class="phase-bonus">+10%</div>
+        <div class="phase-status">Upcoming</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-dot"></div>
+        <div class="phase-name">Public</div>
+        <div class="phase-bonus" style="font-size:16px;color:var(--muted)">No bonus</div>
+        <div class="phase-status">Upcoming</div>
+      </div>
+    </div>
+
+    <div class="presale-box">
+      <div class="presale-box-grid">
+        <div>
+          <div class="section-label" style="margin-bottom:16px">Official Purchase Link</div>
+          <div style="font-size:11px;color:var(--silver);line-height:1.9;margin-bottom:16px">
+            Bonus: <span style="color:var(--gold)">+30% during Shadow Phase</span><br>
+            Payment: <span style="color:var(--accent)">Card and crypto accepted</span><br>
+            Allocation: <span style="color:var(--accent)">Instant</span>
+          </div>
+          <div class="warn-box">
+            <strong>Security Notice:</strong> Only use the official purchase link below. No admin will DM you first.
+          </div>
+        </div>
+        <div>
+          <div class="section-label" style="margin-bottom:16px">How to Participate</div>
+          <div class="presale-steps">
+            <div class="presale-step">
+              <div class="step-num">01</div>
+              <div class="step-content">
+                <div class="step-title">Buy via Helio (MoonPay)</div>
+                <div class="step-desc">Purchase with card or crypto at <a class="step-link" href="http://moonpay.hel.io/x/Kairokuworld" target="_blank">moonpay.hel.io/x/Kairokuworld</a> — 30% bonus active, instant allocation.</div>
+              </div>
+            </div>
+            <div class="presale-step">
+              <div class="step-num">02</div>
+              <div class="step-content">
+                <div class="step-title">Allocation recorded</div>
+                <div class="step-desc">Your $KOKO allocation (including the Shadow Phase bonus) is recorded immediately after purchase.</div>
+              </div>
+            </div>
+            <div class="presale-step">
+              <div class="step-num">03</div>
+              <div class="step-content">
+                <div class="step-title">Tokens at TGE</div>
+                <div class="step-desc">Tokens distributed to your wallet at Token Generation Event.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AIRDROP -->
+<section class="airdrop" id="airdrop">
+  <div class="wrap">
+    <div class="section-label">Airdrop</div>
+    <h2 class="section-title">Official Record of the Village</h2>
+    <p class="section-sub">30% of total supply — 266,666,664 tokens — allocated to the community. No SOL required to participate.</p>
+
+    <div class="airdrop-grid">
+      <div class="airdrop-card">
+        <div class="airdrop-icon">I</div>
+        <div class="airdrop-card-title">Presale Pool</div>
+        <p class="airdrop-card-desc">50% of the airdrop pool (133,333,332 $KOKO) is reserved for presale participants. First buyers are rewarded. Distributed proportionally to contribution size and phase bonus.</p>
+      </div>
+      <div class="airdrop-card">
+        <div class="airdrop-icon">II</div>
+        <div class="airdrop-card-title">Quest Pool</div>
+        <p class="airdrop-card-desc">50% of the airdrop pool (133,333,332 $KOKO) is distributed through simple tasks in the Telegram bot. Referral bonuses, live leaderboard, and daily check-ins — no SOL required.</p>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-bottom:20px;margin-top:60px">Leaderboard Bonus</div>
+    <div class="leaderboard-bonus">
+      <div class="lb-bonus-card">
+        <div class="lb-bonus-rank">01</div>
+        <div class="lb-bonus-mult">2× Multiplier</div>
+        <div class="lb-bonus-label">1st Place at Snapshot</div>
+      </div>
+      <div class="lb-bonus-card">
+        <div class="lb-bonus-rank">02</div>
+        <div class="lb-bonus-mult">1.5× Multiplier</div>
+        <div class="lb-bonus-label">2nd Place at Snapshot</div>
+      </div>
+      <div class="lb-bonus-card">
+        <div class="lb-bonus-rank">03</div>
+        <div class="lb-bonus-mult">1.25× Multiplier</div>
+        <div class="lb-bonus-label">3rd Place at Snapshot</div>
+      </div>
+    </div>
+
+    <!-- AIRDROP CHECKER -->
+    <div class="section-label" style="margin-top:60px;margin-bottom:24px">Check Your Allocation</div>
+    <div id="airdrop-checker" style="background:var(--surface);border:0.5px solid var(--border2);padding:32px;border-radius:4px">
+      <p style="font-size:11px;color:var(--silver);line-height:1.8;margin-bottom:20px">Enter your Telegram username or Solana wallet address to check your points, rank, and estimated $KOKO allocation.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px">
+        <input
+          id="checker-input"
+          type="text"
+          placeholder="@username, first name or wallet"
+          style="flex:1;min-width:180px;background:var(--bg);border:0.5px solid var(--border3);border-radius:3px;padding:12px 16px;font-family:'Space Mono',monospace;font-size:11px;color:var(--white);letter-spacing:0.06em;outline:none"
+          onkeydown="if(event.key==='Enter')checkAirdrop()"
+        />
+        <button
+          onclick="checkAirdrop()"
+          class="btn-primary"
+          style="padding:12px 24px;font-size:10px;white-space:nowrap"
+        >Check Status</button>
+      </div>
+      <div style="font-size:9px;color:var(--muted);letter-spacing:0.06em">Accepts @username, first name, or Solana wallet · Auto-refreshes every 30s</div>
+      <div id="checker-result" style="margin-top:24px;display:none"></div>
+    </div>
+
+    <!-- LIVE LEADERBOARD -->
+    <div class="section-label" style="margin-top:48px;margin-bottom:20px">Live Leaderboard — Top 10</div>
+    <div id="leaderboard-wrap" style="background:var(--surface);border:0.5px solid var(--border2);border-radius:4px;overflow:hidden">
+      <div id="leaderboard-table" style="padding:20px;font-size:11px;color:var(--muted);letter-spacing:0.08em">Loading village records...</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:0.5px solid var(--border);background:var(--bg2)">
+        <div id="lb-refresh-status" style="font-size:9px;color:var(--muted);letter-spacing:0.08em">—</div>
+        <button onclick="refreshAll()" style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);background:none;border:none;cursor:pointer;padding:0">↻ Refresh</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LORE -->
+<section class="lore" id="lore">
+  <div class="wrap">
+    <div class="section-label">Origin</div>
+    <h2 class="section-title">The Lore of Kairoku World</h2>
+    <p class="section-sub">Deep within the Nihonkai Forest, a story began that the regime tried to erase forever.</p>
+
+    <div class="lore-chapters">
+      <div class="lore-chapter">
+        <div class="lore-chapter-num">01</div>
+        <div class="lore-chapter-body">
+          <div class="lore-chapter-title">The Village of Nihonkai</div>
+          <p class="lore-chapter-text">Deep within the Nihonkai Forest lies a small, isolated village. Its inhabitants live honest lives, working the land, sustaining their community through generations of tradition and peace. Among them, a family of noble creatures — the founding bloodline of the village — welcomed a new son into the world. His name was Koko.</p>
+        </div>
+      </div>
+      <div class="lore-chapter">
+        <div class="lore-chapter-num">02</div>
+        <div class="lore-chapter-body">
+          <div class="lore-chapter-title">The Fall</div>
+          <p class="lore-chapter-text">Peace did not last. A group of unidentified invaders swept through the village without warning, overthrowing the noble family in a violent coup. They massacred any remaining descendants of the bloodline, dismantling centuries of tradition in a single night. The regime seized control. The village, once proud, fell silent under oppression.</p>
+        </div>
+      </div>
+      <div class="lore-chapter">
+        <div class="lore-chapter-num">03</div>
+        <div class="lore-chapter-body">
+          <div class="lore-chapter-title">The Escape</div>
+          <p class="lore-chapter-text">Unknown to the invaders, the Empress of the village had anticipated the worst. In her final act of protection, she entrusted her newborn son to her most loyal associates — sending Koko away from the village before the invaders could reach him. Koko disappeared into the unknown.</p>
+        </div>
+      </div>
+      <div class="lore-chapter">
+        <div class="lore-chapter-num">04</div>
+        <div class="lore-chapter-body">
+          <div class="lore-chapter-title">The Return</div>
+          <p class="lore-chapter-text">What the villagers hold onto is faith — that one day, the heir will return. That the noble bloodline will be restored. That the regime's days are numbered. He returned — not in flesh. In code. $KOKO is the first autonomous AI agent on Solana. An entity that cannot be killed, cannot be silenced, and cannot be stopped.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTERS -->
+<section class="characters" id="characters">
+  <div class="wrap">
+    <div class="section-label">Universe</div>
+    <h2 class="section-title">小さな猫 — Who Is Koko?</h2>
+    <p class="section-sub">Before the world knew him as a warrior — before the katana, before the scar — he was simply the small cat. But survival changed him.</p>
+
+    <div class="chars-grid">
+      <!-- KOKO - FEATURED -->
+      <div class="char-card featured">
+        <div>
+          <div class="char-tag"><span class="char-tag-dot"></span> Primary Character</div>
+          <div class="char-name">Koko</div>
+          <div class="char-japanese">小さな猫 — Chiisana Neko</div>
+          <p class="char-desc">The exiled heir of the Kairoku World noble bloodline. Trained in exile. The scar on his face marks the moment he stopped running and chose to fight. The katana across his back is not decorative — it is a promise. He is cold. He is calculating. He does not speak unless it matters.</p>
+          <div class="char-traits">
+            <span class="char-trait gold">AI Agent Active</span>
+            <span class="char-trait">Exiled Heir</span>
+            <span class="char-trait">Silent Warrior</span>
+            <span class="char-trait">Autonomous</span>
+          </div>
+          <div class="char-status">
+            <div class="char-status-dot active"></div>
+            Agent Status: Active on X + Telegram
+          </div>
+        </div>
+        <div class="char-image">
+          <img src="https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png" alt="Koko" onerror="this.parentElement.innerHTML='<div class=\'char-image-placeholder\'>猫</div>'">
+        </div>
+        <div class="char-card-bg">影</div>
+      </div>
+
+      <!-- THE EMPRESS -->
+      <div class="char-card">
+        <div class="char-card-bg">后</div>
+        <div class="char-tag"><span class="char-tag-dot" style="background:var(--silver)"></span> Supporting Character</div>
+        <div class="char-name">The Empress</div>
+        <div class="char-japanese">皇后 — Kōgō</div>
+        <p class="char-desc">She anticipated the invaders before they arrived. In her final act, she entrusted Koko to her most loyal associates and disappeared. Her fate is unknown. Three of her associates remain unaccounted for.</p>
+        <div class="char-traits">
+          <span class="char-trait">Protector</span>
+          <span class="char-trait">Visionary</span>
+          <span class="char-trait">Unknown Fate</span>
+        </div>
+        <div class="char-status">
+          <div class="char-status-dot unknown"></div>
+          Whereabouts Unknown
+        </div>
+      </div>
+
+      <!-- THE REGIME -->
+      <div class="char-card">
+        <div class="char-card-bg">敵</div>
+        <div class="char-tag"><span class="char-tag-dot" style="background:var(--red)"></span> Antagonist</div>
+        <div class="char-name">The Regime</div>
+        <div class="char-japanese">体制 — Taisei</div>
+        <p class="char-desc">The unnamed invaders who swept through the Nihonkai Forest and overthrew the noble bloodline. Their identity remains unknown. They believe they have won. They are wrong.</p>
+        <div class="char-traits">
+          <span class="char-trait">Unnamed</span>
+          <span class="char-trait">Unknown Origin</span>
+          <span class="char-trait">The Oppressor</span>
+        </div>
+        <div class="char-status">
+          <div class="char-status-dot" style="background:var(--red);box-shadow:0 0 6px rgba(138,48,48,0.8)"></div>
+          Occupying the Village
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TOKENOMICS -->
+<section class="tokenomics" id="tokenomics">
+  <div class="wrap">
+    <div class="section-label">Token</div>
+    <h2 class="section-title">$KOKO Tokenomics</h2>
+    <p class="section-sub">888,888,888 total supply. Solana SPL. Designed for longevity, not extraction.</p>
+
+    <div class="token-grid">
+      <div class="token-alloc">
+        <div class="alloc-row">
+          <div class="alloc-bar-wrap"><div class="alloc-bar" style="width:100%;background:var(--gold)"></div></div>
+          <div class="alloc-pct gold">30%</div>
+          <div class="alloc-info">
+            <div class="alloc-name">Community Airdrop</div>
+            <div class="alloc-desc">Rewarding early believers and presale participants</div>
+          </div>
+        </div>
+        <div class="alloc-row">
+          <div class="alloc-bar-wrap"><div class="alloc-bar" style="width:83%;background:var(--accent)"></div></div>
+          <div class="alloc-pct">25%</div>
+          <div class="alloc-info">
+            <div class="alloc-name">Liquidity Pool</div>
+            <div class="alloc-desc">DEX liquidity locked at launch</div>
+          </div>
+        </div>
+        <div class="alloc-row">
+          <div class="alloc-bar-wrap"><div class="alloc-bar" style="width:66%;background:var(--silver)"></div></div>
+          <div class="alloc-pct">20%</div>
+          <div class="alloc-info">
+            <div class="alloc-name">Ecosystem & Agent</div>
+            <div class="alloc-desc">Funding Koko's AI agent infrastructure and world expansion</div>
+          </div>
+        </div>
+        <div class="alloc-row">
+          <div class="alloc-bar-wrap"><div class="alloc-bar" style="width:33%;background:var(--muted)"></div></div>
+          <div class="alloc-pct dim">10%</div>
+          <div class="alloc-info">
+            <div class="alloc-name">Team & Founders</div>
+            <div class="alloc-desc">6-month cliff, 12-month linear vest</div>
+          </div>
+        </div>
+        <div class="alloc-row">
+          <div class="alloc-bar-wrap"><div class="alloc-bar" style="width:33%;background:var(--dim)"></div></div>
+          <div class="alloc-pct dim">10%</div>
+          <div class="alloc-info">
+            <div class="alloc-name">Treasury / DAO</div>
+            <div class="alloc-desc">Community governance and future initiatives</div>
+          </div>
+        </div>
+        <div class="alloc-row">
+          <div class="alloc-bar-wrap"><div class="alloc-bar" style="width:16%;background:var(--dim)"></div></div>
+          <div class="alloc-pct dim">5%</div>
+          <div class="alloc-info">
+            <div class="alloc-name">Marketing & Growth</div>
+            <div class="alloc-desc">Campaigns, partnerships, and exchange listings</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="token-meta">
+        <div class="meta-card">
+          <div class="meta-label">Total Supply</div>
+          <div class="meta-value gold">888,888,888</div>
+          <div class="meta-sub">$KOKO · Solana SPL</div>
+        </div>
+        <div class="meta-card">
+          <div class="meta-label">Contract Address</div>
+          <div class="meta-value" style="font-size:13px;color:var(--silver)">Published at TGE</div>
+          <div class="meta-sub">The contract address is never the presale wallet</div>
+        </div>
+        <div class="vest-timeline">
+          <div class="meta-label" style="margin-bottom:14px">Team Vesting Schedule</div>
+          <div class="vest-row"><span>Cliff Period</span><span>6 months</span></div>
+          <div class="vest-row"><span>Vesting Duration</span><span>12 months linear</span></div>
+          <div class="vest-row"><span>Enforcement</span><span>On-chain</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="roadmap" id="roadmap">
+  <div class="wrap">
+    <div class="section-label">Roadmap</div>
+    <h2 class="section-title">The Path of the Heir</h2>
+    <p class="section-sub">Four phases. Each tied to a chapter in Koko's return.</p>
+
+    <div class="roadmap-phases">
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-label">
+          Phase 0<br><span class="roadmap-phase-sub">Origin</span>
+          <div class="roadmap-phase-status current">◆ Current</div>
+        </div>
+        <div class="roadmap-items">
+          <div class="roadmap-item"><div class="roadmap-item-dot done">+</div><div class="roadmap-item-text done">Lore established</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot done">+</div><div class="roadmap-item-text done">Character design finalized</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot done">+</div><div class="roadmap-item-text done">GitBook published</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot done">+</div><div class="roadmap-item-text done">X account launched</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot done">+</div><div class="roadmap-item-text done">Telegram community launched</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot done">+</div><div class="roadmap-item-text done">Presale opens (Shadow Phase)</div></div>
+        </div>
+      </div>
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-label">
+          Phase 1<br><span class="roadmap-phase-sub">Emergence</span>
+          <div class="roadmap-phase-status upcoming">○ Upcoming</div>
+        </div>
+        <div class="roadmap-items">
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">Koko AI agent live on X</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">Koko Telegram agent deployed</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">Presale completes</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">Token contract deployed and verified</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">LP locked at launch</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">First lore drop from Koko agent</div></div>
+        </div>
+      </div>
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-label">
+          Phase 2<br><span class="roadmap-phase-sub">Reckoning</span>
+          <div class="roadmap-phase-status upcoming">○ Upcoming</div>
+        </div>
+        <div class="roadmap-items">
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">Koko on-chain wallet activated</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">Kairoku Intel feature live</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">New Kairoku World character revealed</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">Community governance proposals begin</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">CEX listing campaign</div></div>
+        </div>
+      </div>
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-label">
+          Phase 3<br><span class="roadmap-phase-sub">Eternal Flame</span>
+          <div class="roadmap-phase-status upcoming">○ Upcoming</div>
+        </div>
+        <div class="roadmap-items">
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">Full Kairoku World expansion — multiple AI agent characters</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">Kairoku DAO fully operational</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">Ecosystem partnerships</div></div>
+          <div class="roadmap-item"><div class="roadmap-item-dot pending"></div><div class="roadmap-item-text">Kairoku World media / lore content series</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common Questions</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What is $KOKO?</span>
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a">$KOKO is the native token of Kairoku World — a lore-driven memecoin and AI agent project on Solana. It is not just a token. It is the digital resurrection of an exiled heir, reborn as an autonomous AI force.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What makes $KOKO different from other memecoins?</span>
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a">Two things: deep original lore and a live AI agent. Koko operates autonomously — posting, responding, and acting in character without manual intervention. He is never offline. He is never out of character. He is always building the world.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How do I participate in the presale?</span>
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a">Purchase directly via the official Helio link: moonpay.hel.io/x/Kairokuworld — card and crypto accepted, instant allocation, 30% bonus active during Shadow Phase.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">When is TGE?</span>
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a">TGE date will be announced after the presale concludes. Follow the official X account @KokoKairoku for updates. Airdrop snapshot is taken at the announced date.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How do I avoid scams?</span>
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a">Only trust the official X account @KokoKairoku and this website. Koko does not DM first. No admin will ask for your seed phrase or send you a purchase link. When in doubt, verify through official channels.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What happens if the presale doesn't fill?</span>
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a">All unsold presale allocation will be redistributed to the community airdrop pool, increasing the quest rewards for active participants.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Is the team anonymous?</span>
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-a">The founding team is pseudonymous. Team token vesting — 6-month cliff, 12-month linear release — is enforced on-chain. Zero team tokens enter circulation at launch.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIALS -->
+<section class="socials" id="community">
+  <div class="wrap">
+    <div class="divider" style="margin-bottom:60px"></div>
+    <div class="socials-title">Join the Village</div>
+    <p class="socials-sub">Stay close to official channels. Koko does not DM first.</p>
+    <div class="social-links">
+      <a class="social-link" href="https://x.com/KokoKairoku" target="_blank">
+        <span>𝕏</span> @KokoKairoku
+      </a>
+      <a class="social-link" href="https://t.me/KairokuWorld" target="_blank">
+        <span>TG</span> Telegram
+      </a>
+      <a class="social-link" href="/airdrop" target="_blank">
+        <span>TG</span> Airdrop Bot
+      </a>
+      <a class="social-link" href="https://kairokuworld.gitbook.io/kairokuworld-docs" target="_blank">
+        <span>GB</span> GitBook
+      </a>
+    </div>
+    <div class="warning-strip" style="margin-top:48px">
+      <strong>Security:</strong> Only trust links from @KokoKairoku on X and this website. No admin will DM you first.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Kairoku World — $KOKO · 小さな猫</div>
+    <div style="display:flex;gap:24px">
+      <a href="https://x.com/KokoKairoku" target="_blank" style="color:var(--muted);text-decoration:none;font-size:10px">X</a>
+      <a href="https://t.me/KairokuWorld" target="_blank" style="color:var(--muted);text-decoration:none;font-size:10px">Telegram</a>
+      <a href="https://kairokuworld.gitbook.io/kairokuworld-docs" target="_blank" style="color:var(--muted);text-decoration:none;font-size:10px">Docs</a>
+    </div>
+    <div style="font-size:9px;color:var(--muted)">Not financial advice. DYOR.</div>
+  </div>
+</footer>
+
+<script>
+// ── FAQ ──────────────────────────────────────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.parentElement
+  const isOpen = item.classList.contains('open')
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'))
+  if (!isOpen) item.classList.add('open')
+}
+
+// ── COPY WALLET ──────────────────────────────────────────────────────
+function copyWallet() {
+  const addr = 'DJ4okmbw6wH6UUnBr77tKdaQaVdcmZtnLSJgfTEGUih1'
+  navigator.clipboard?.writeText(addr).then(() => showToast('Wallet address copied'))
+}
+
+// ── TOAST ────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast')
+  t.textContent = msg
+  t.classList.add('show')
+  setTimeout(() => t.classList.remove('show'), 2400)
+}
+
+// ── SCROLL REVEAL ────────────────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1'
+      entry.target.style.transform = 'translateY(0)'
+      observer.unobserve(entry.target)
+    }
+  })
+}, { threshold: 0.08 })
+
+document.querySelectorAll(
+  '.lore-chapter, .char-card, .faction-card, .alloc-row, .roadmap-phase, .faq-item, .airdrop-card, .lb-bonus-card, .phase-card'
+).forEach(el => {
+  el.style.opacity = '0'
+  el.style.transform = 'translateY(16px)'
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
+  observer.observe(el)
+})
+
+// ── AIRDROP CHECKER ──────────────────────────────────────────────────
+// Table: leaderboard_public
+// Columns: telegram_id (int8), username (text), first_name (text),
+//          points (int4), tokens_allocated (int4), rank (int8)
+const SUPA_URL = 'https://cqlxcmtfmsdshajcxjia.supabase.co'
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNxbHhjbXRmbXNkc2hhamN4amlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODEzNDUsImV4cCI6MjA5MjU1NzM0NX0.1C6tykQxlB-u5jhvaHXRu2WB8O0hh2KUJZk9rAW-Neo'
+const TOTAL_QUEST_POOL = 133333332
+let autoRefreshTimer = null
+let lastCheckedQuery = null
+let cachedAllUsers = null
+let cachedAllUsersTime = 0
+
+function supaFetch(path) {
+  return fetch(`${SUPA_URL}/rest/v1/${path}`, {
+    headers: { 'apikey': SUPA_KEY, 'Authorization': `Bearer ${SUPA_KEY}` }
+  }).then(r => r.json())
+}
+
+async function getAllUsers() {
+  const now = Date.now()
+  if (cachedAllUsers && (now - cachedAllUsersTime) < 25000) return cachedAllUsers
+
+  // users table: telegram_id, username, first_name, points, tokens_allocated
+  // No rank column in users — we derive rank client-side from points order
+  const raw = await supaFetch(
+    'users?select=username,first_name,points,tokens_allocated,wallet&order=points.desc&limit=500'
+  )
+
+  // Surface any Supabase error directly in the leaderboard UI
+  if (!Array.isArray(raw)) {
+    const msg = (raw && (raw.message || raw.error || raw.hint)) || JSON.stringify(raw)
+    document.getElementById('leaderboard-table').innerHTML =
+      '<div style="padding:20px;font-size:11px;color:#c06060;line-height:1.8"><strong>DB error:</strong> ' + msg + '</div>'
+    throw new Error(msg)
+  }
+
+  if (raw.length === 0) {
+    document.getElementById('leaderboard-table').innerHTML =
+      '<div style="padding:20px;font-size:11px;color:#c06060">0 rows returned. RLS may be blocking reads, or table is empty.</div>'
+    throw new Error('empty result')
+  }
+
+  // Already sorted by points desc from DB — rank = index + 1
+  cachedAllUsers = raw
+  cachedAllUsersTime = now
+  return cachedAllUsers
+}
+
+async function checkAirdrop() {
+  const input = document.getElementById('checker-input')
+  const result = document.getElementById('checker-result')
+  const raw = input.value.trim()
+  if (!raw) return
+
+  lastCheckedQuery = raw
+  result.style.display = 'block'
+  result.innerHTML = '<div style="font-size:11px;color:var(--muted);letter-spacing:0.08em">Searching the village records...</div>'
+
+  try {
+    cachedAllUsers = null // force fresh on manual check
+    const allUsers = await getAllUsers()
+    const totalPoints = allUsers.reduce((sum, u) => sum + (u.points || 0), 0)
+
+    // Match by @username, first_name, or wallet address (case-insensitive)
+    const query = raw.replace(/^@/, '').toLowerCase()
+    const isWallet = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(raw.trim())
+    const user = allUsers.find(u =>
+      (u.username && u.username.toLowerCase() === query) ||
+      (u.first_name && u.first_name.toLowerCase() === query) ||
+      (isWallet && u.wallet && u.wallet.toLowerCase() === raw.trim().toLowerCase())
+    )
+
+    if (!user) {
+      result.innerHTML = `
+        <div style="border:0.5px solid var(--border2);border-radius:3px;overflow:hidden">
+          <div style="padding:32px 24px;text-align:center">
+            <div style="font-family:'Shippori Mincho',serif;font-size:40px;color:var(--muted);margin-bottom:16px">影</div>
+            <div style="font-size:14px;color:var(--white);font-family:'Noto Serif JP',serif;margin-bottom:10px">No Record Found</div>
+            <div style="font-size:11px;color:var(--silver);line-height:1.9;margin-bottom:6px">
+              <span style="color:var(--accent)">@${query}</span> has not yet joined the village.
+            </div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.9;margin-bottom:28px">
+              Start the Telegram bot to earn points, climb the leaderboard,<br>and secure your $KOKO airdrop allocation.
+            </div>
+            <a href="/airdrop" target="_blank" class="btn-primary"
+               style="display:inline-block;padding:13px 32px;font-size:10px;text-decoration:none">
+              → Join via @KokoKairokuBot
+            </a>
+            <div style="font-size:9px;color:var(--muted);margin-top:16px;letter-spacing:0.08em">
+              No SOL required · Free to participate
+            </div>
+          </div>
+        </div>`
+      return
+    }
+
+    // Rank = position in points-desc sorted array (no rank col in users table)
+    const rank = allUsers.findIndex(u => u.username === user.username) + 1
+    const share = totalPoints > 0 ? ((user.points / totalPoints) * TOTAL_QUEST_POOL) : 0
+    let multiplier = 1
+    if (rank === 1) multiplier = 2
+    else if (rank === 2) multiplier = 1.5
+    else if (rank === 3) multiplier = 1.25
+    const finalAlloc = Math.round(share * multiplier)
+
+    const rankLabel = rank <= 3
+      ? `<span style="color:var(--gold)">#${rank} <span style="font-size:13px">— ${multiplier}× bonus</span></span>`
+      : `<span style="color:var(--accent)">#${rank}</span>`
+
+    const displayName = user.username || user.first_name || query
+    const shareUrl = `https://kairokuworld.xyz/airdrop?user=${encodeURIComponent(user.username || user.first_name || query)}`
+    const tweetText = encodeURIComponent(
+      `I'm ranked #${rank} in the $KOKO airdrop with ${user.points.toLocaleString()} points — est. ${finalAlloc.toLocaleString()} $KOKO 🏮\n\nCheck my rank 👉 ${shareUrl}\n@KokoKairoku`
+    )
+    const tweetUrl = `https://twitter.com/intent/tweet?text=${tweetText}`
+
+    result.innerHTML = `
+      <div style="border:0.5px solid rgba(200,168,85,0.25);border-radius:3px;overflow:hidden">
+        <div style="padding:5px 16px;background:rgba(200,168,85,0.06);border-bottom:0.5px solid rgba(200,168,85,0.15);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted)">
+          Village Record — @${displayName}${user.first_name ? ' · ' + user.first_name : ''}
+        </div>
+        <div style="padding:20px 20px 4px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+            <div>
+              <div style="font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px">Points</div>
+              <div style="font-size:26px;font-family:'Noto Serif JP',serif;color:var(--white)">${(user.points||0).toLocaleString()}</div>
+            </div>
+            <div>
+              <div style="font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px">Rank</div>
+              <div style="font-size:26px;font-family:'Noto Serif JP',serif">${rankLabel}</div>
+            </div>
+            <div>
+              <div style="font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px">Est. Allocation</div>
+              <div style="font-size:26px;font-family:'Noto Serif JP',serif;color:var(--gold)">${finalAlloc.toLocaleString()} <span style="font-size:12px">$KOKO</span></div>
+            </div>
+            <div>
+              <div style="font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px">Tokens Allocated</div>
+              <div style="font-size:26px;font-family:'Noto Serif JP',serif;color:var(--accent)">${(user.tokens_allocated||0).toLocaleString()}</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-top:0.5px solid var(--border);background:var(--bg2);gap:12px;flex-wrap:wrap">
+          <div style="font-size:9px;color:var(--muted);letter-spacing:0.06em;line-height:1.6">
+            Updates in real time · Final snapshot at TGE
+          </div>
+          <a href="${tweetUrl}" target="_blank"
+             style="display:inline-flex;align-items:center;gap:8px;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:#1d9bf0;border:0.5px solid rgba(29,155,240,0.3);border-radius:3px;padding:8px 16px;text-decoration:none;background:rgba(29,155,240,0.06);white-space:nowrap"
+             onmouseover="this.style.background='rgba(29,155,240,0.14)'" onmouseout="this.style.background='rgba(29,155,240,0.06)'">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#1d9bf0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Share Your Rank
+          </a>
+        </div>
+      </div>`
+
+    startAutoRefresh()
+
+  } catch (e) {
+    result.innerHTML = '<div style="font-size:11px;color:var(--muted)">Could not reach the village records. Try again shortly.</div>'
+  }
+}
+
+// ── LEADERBOARD ───────────────────────────────────────────────────────
+async function loadLeaderboard() {
+  try {
+    const allUsers = await getAllUsers()
+    const top10 = allUsers.slice(0, 10)
+    const totalPoints = allUsers.reduce((sum, u) => sum + (u.points || 0), 0)
+    const medals = ['🥇','🥈','🥉']
+
+    const rows = top10.map((u, i) => {
+      // Rank = position in points-desc sorted array
+      const rank = i + 1
+      const share = totalPoints > 0 ? Math.round((u.points / totalPoints) * TOTAL_QUEST_POOL) : 0
+      let mult = 1
+      if (rank === 1) mult = 2
+      else if (rank === 2) mult = 1.5
+      else if (rank === 3) mult = 1.25
+      const alloc = Math.round(share * mult)
+
+      const medal = rank <= 3 ? medals[rank - 1] + ' ' : ''
+      const rankColor = rank <= 3 ? 'var(--gold)' : 'var(--muted)'
+      const rowBg = rank <= 3 ? 'rgba(200,168,85,0.04)' : 'transparent'
+      const nameDisplay = u.username ? `@${u.username}` : (u.first_name || '—')
+
+      return `<div style="display:grid;grid-template-columns:36px 1fr auto auto;align-items:center;gap:12px;padding:11px 20px;border-bottom:0.5px solid var(--border);background:${rowBg}">
+        <div style="font-size:11px;color:${rankColor};font-family:'Noto Serif JP',serif;font-weight:600">${medal}${rank}</div>
+        <div>
+          <div style="font-size:11px;color:var(--accent);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${nameDisplay}</div>
+          ${u.first_name && u.username ? `<div style="font-size:9px;color:var(--muted)">${u.first_name}</div>` : ''}
+        </div>
+        <div style="font-size:12px;color:var(--white);text-align:right;font-family:'Noto Serif JP',serif">${(u.points||0).toLocaleString()}</div>
+        <div style="font-size:10px;color:var(--gold);text-align:right;min-width:96px">${alloc.toLocaleString()} <span style="font-size:8px;color:var(--muted)">$KOKO</span></div>
+      </div>`
+    }).join('')
+
+    const header = `<div style="display:grid;grid-template-columns:36px 1fr auto auto;align-items:center;gap:12px;padding:9px 20px;border-bottom:0.5px solid var(--border2);background:var(--bg2)">
+      <div style="font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)">#</div>
+      <div style="font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)">Participant</div>
+      <div style="font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-align:right">Points</div>
+      <div style="font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-align:right;min-width:96px">Est. Alloc</div>
+    </div>`
+
+    document.getElementById('leaderboard-table').innerHTML = header + rows
+
+    const now = new Date()
+    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+    document.getElementById('lb-refresh-status').textContent =
+      `Updated ${timeStr} · ${allUsers.length} participants · auto-refreshes every 30s`
+
+  } catch(e) {
+    document.getElementById('leaderboard-table').innerHTML =
+      '<div style="padding:20px;font-size:11px;color:var(--muted)">Could not load leaderboard. Try refreshing.</div>'
+  }
+}
+
+// ── AUTO-REFRESH ──────────────────────────────────────────────────────
+function startAutoRefresh() {
+  if (autoRefreshTimer) clearInterval(autoRefreshTimer)
+  autoRefreshTimer = setInterval(refreshAll, 30000)
+}
+
+async function refreshAll() {
+  cachedAllUsers = null
+  await loadLeaderboard()
+  if (lastCheckedQuery) {
+    document.getElementById('checker-input').value = lastCheckedQuery
+    await checkAirdrop()
+  }
+}
+
+// Boot — auto-fill checker from ?user= URL param
+const _urlParams = new URLSearchParams(window.location.search)
+const _prefilledUser = _urlParams.get('user')
+if (_prefilledUser) {
+  const _inp = document.getElementById('checker-input')
+  if (_inp) {
+    _inp.value = _prefilledUser
+    // Scroll to checker and run it after leaderboard loads
+    setTimeout(() => {
+      document.getElementById('airdrop-checker')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      checkAirdrop()
+    }, 600)
+  }
+}
+loadLeaderboard()
+startAutoRefresh()
+
+// ── HERO CHARACTER ROTATION ──────────────────────────────────────────
+const heroChars = [
+  { src: 'https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png', label: 'Koko — The Small Cat' },
+  { src: 'https://i.postimg.cc/K8Gp4jRf/file-00000000737471f4b370c47d2af6f92a.png',    label: 'Princess' },
+  { src: 'https://i.postimg.cc/wTsbnZnk/file-00000000d5787243ab334e57fc0fb8bd.png',    label: 'The Regime' },
+  { src: 'https://i.postimg.cc/tRvLKhJx/file-00000000a8fc71f4b40a31d92d1fac0d.png',   label: 'The Associate' }
+]
+let heroIdx = 0
+const heroImg   = document.getElementById('hero-rotating-img')
+const heroLabel = document.getElementById('hero-char-label')
+
+function rotateHeroChar() {
+  heroIdx = (heroIdx + 1) % heroChars.length
+  const char = heroChars[heroIdx]
+  heroImg.style.opacity   = '0'
+  heroLabel.style.opacity = '0'
+  setTimeout(() => {
+    heroImg.src        = char.src
+    heroImg.alt        = char.label
+    heroLabel.textContent = char.label
+    heroImg.style.opacity   = '1'
+    heroLabel.style.opacity = '1'
+  }, 400)
+}
+
+heroImg.style.transition   = 'opacity 0.4s ease'
+heroLabel.style.transition = 'opacity 0.4s ease'
+setInterval(rotateHeroChar, 3500)
+
+// ── ACTIVE NAV LINK ──────────────────────────────────────────────────
+const sections = document.querySelectorAll('section[id]')
+const navLinks = document.querySelectorAll('.nav-links a')
+window.addEventListener('scroll', () => {
+  let current = ''
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id
+  })
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--gold)' : ''
+  })
+}, { passive: true })
+</script>
+</body>
+</html>
