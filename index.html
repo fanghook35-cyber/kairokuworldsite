@@ -608,6 +608,124 @@ footer {
   .wrap { padding: 0 18px; }
   .presale-box { padding: 28px 20px; }
 }
+
+/* ── SCROLL LEADERBOARD AESTHETIC ── */
+#leaderboard-wrap {
+  position: relative;
+  background:
+    linear-gradient(180deg,
+      rgba(18,14,8,0.98) 0%,
+      rgba(22,18,10,0.95) 15%,
+      rgba(16,13,7,0.93) 85%,
+      rgba(18,14,8,0.98) 100%
+    ) !important;
+  border: none !important;
+  border-radius: 2px !important;
+  box-shadow:
+    0 0 0 1px rgba(180,140,60,0.18),
+    0 0 0 3px rgba(10,8,4,0.9),
+    0 0 40px rgba(0,0,0,0.8),
+    inset 0 1px 0 rgba(200,168,85,0.12),
+    inset 0 -1px 0 rgba(200,168,85,0.08);
+  overflow: hidden !important;
+}
+
+/* Top scroll rod */
+#leaderboard-wrap::before {
+  content: '';
+  display: block;
+  height: 6px;
+  background: linear-gradient(90deg,
+    rgba(90,65,25,0.4) 0%,
+    rgba(200,168,85,0.35) 20%,
+    rgba(230,195,100,0.5) 50%,
+    rgba(200,168,85,0.35) 80%,
+    rgba(90,65,25,0.4) 100%
+  );
+  border-bottom: 1px solid rgba(200,168,85,0.2);
+}
+
+/* Bottom scroll rod */
+#leaderboard-wrap::after {
+  content: '';
+  display: block;
+  height: 6px;
+  background: linear-gradient(90deg,
+    rgba(90,65,25,0.4) 0%,
+    rgba(200,168,85,0.35) 20%,
+    rgba(230,195,100,0.5) 50%,
+    rgba(200,168,85,0.35) 80%,
+    rgba(90,65,25,0.4) 100%
+  );
+  border-top: 1px solid rgba(200,168,85,0.2);
+}
+
+/* Table rows — parchment stripe */
+#leaderboard-table > div {
+  border-bottom: 1px solid rgba(200,168,85,0.08) !important;
+  transition: background 0.15s ease;
+  position: relative;
+}
+#leaderboard-table > div:last-child {
+  border-bottom: none !important;
+}
+#leaderboard-table > div:not(:first-child):hover {
+  background: rgba(200,168,85,0.05) !important;
+}
+
+/* Header row */
+#leaderboard-table > div:first-child {
+  background: linear-gradient(90deg,
+    rgba(200,168,85,0.04) 0%,
+    rgba(200,168,85,0.09) 50%,
+    rgba(200,168,85,0.04) 100%
+  ) !important;
+  border-bottom: 1px solid rgba(200,168,85,0.2) !important;
+  letter-spacing: 0.18em !important;
+}
+
+/* Top + bottom content fade */
+.lb-fade-top, .lb-fade-bottom {
+  pointer-events: none;
+  position: absolute;
+  left: 0; right: 0;
+  height: 32px;
+  z-index: 2;
+}
+.lb-fade-top {
+  top: 6px;
+  background: linear-gradient(to bottom, rgba(18,14,8,0.7), transparent);
+}
+.lb-fade-bottom {
+  bottom: 48px;
+  background: linear-gradient(to top, rgba(18,14,8,0.7), transparent);
+}
+
+/* Footer bar */
+#leaderboard-wrap > div:last-child {
+  background: linear-gradient(90deg,
+    rgba(200,168,85,0.03) 0%,
+    rgba(200,168,85,0.07) 50%,
+    rgba(200,168,85,0.03) 100%
+  ) !important;
+  border-top: 1px solid rgba(200,168,85,0.15) !important;
+}
+
+/* Gold rank numbers for top 3 rows */
+#leaderboard-table > div:nth-child(2) { background: rgba(200,168,85,0.05) !important; }
+#leaderboard-table > div:nth-child(3) { background: rgba(160,160,160,0.03) !important; }
+#leaderboard-table > div:nth-child(4) { background: rgba(140,90,40,0.03) !important; }
+
+/* Refresh button */
+#leaderboard-wrap button {
+  color: rgba(200,168,85,0.7) !important;
+  letter-spacing: 0.14em !important;
+  font-size: 8px !important;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+#leaderboard-wrap button:hover { color: rgba(200,168,85,1) !important; }
+
 </style>
 </head>
 <body>
@@ -813,7 +931,9 @@ footer {
 
     <!-- LIVE LEADERBOARD -->
     <div class="section-label" style="margin-top:48px;margin-bottom:20px">Live Leaderboard — Top 10</div>
-    <div id="leaderboard-wrap" style="background:var(--surface);border:0.5px solid var(--border2);border-radius:4px;overflow:hidden">
+    <div id="leaderboard-wrap" style="position:relative">
+      <div class="lb-fade-top"></div>
+      <div class="lb-fade-bottom"></div>
       <div id="leaderboard-table" style="padding:20px;font-size:11px;color:var(--muted);letter-spacing:0.08em">Loading village records...</div>
       <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:0.5px solid var(--border);background:var(--bg2)">
         <div id="lb-refresh-status" style="font-size:9px;color:var(--muted);letter-spacing:0.08em">—</div>
@@ -891,10 +1011,10 @@ footer {
           </div>
         </div>
         <div class="char-image">
-  <img src="https://i.postimg.cc/CKfzG870/Picsart-26-05-02-13-55-01-067.png" alt="Chiisana Neko"
-  onerror="this.parentElement.innerHTML='<div class=\'char-image-placeholder\'>猫</div>'">
-</div>
-<div class="char-card-bg">影</div>
+          <img src="https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png" alt="Koko" onerror="this.parentElement.innerHTML='<div class=\'char-image-placeholder\'>猫</div>'">
+        </div>
+        <div class="char-card-bg">影</div>
+      </div>
 
       <!-- THE EMPRESS -->
       <div class="char-card">
@@ -1249,7 +1369,7 @@ async function getAllUsers() {
   // users table: telegram_id, username, first_name, points, tokens_allocated
   // No rank column in users — we derive rank client-side from points order
   const raw = await supaFetch(
-    'users?select=username,first_name,points,tokens_allocated,wallet_address&order=points.desc&limit=500'
+    'users?select=username,first_name,points,tokens_allocated,wallet&order=points.desc&limit=500'
   )
 
   // Surface any Supabase error directly in the leaderboard UI
@@ -1293,7 +1413,7 @@ async function checkAirdrop() {
     const user = allUsers.find(u =>
       (u.username && u.username.toLowerCase() === query) ||
       (u.first_name && u.first_name.toLowerCase() === query) ||
-      (isWallet && u.wallet_address && u.wallet_address.toLowerCase() === raw.trim().toLowerCase())
+      (isWallet && u.wallet && u.wallet.toLowerCase() === raw.trim().toLowerCase())
     )
 
     if (!user) {
@@ -1473,10 +1593,11 @@ startAutoRefresh()
 
 // ── HERO CHARACTER ROTATION ──────────────────────────────────────────
 const heroChars = [
-  { src: 'https://i.postimg.cc/cCfzwFgR/Picsart-26-05-02-13-40-36-651.png', label: 'Princess' },
-  { src: 'https://i.postimg.cc/TwGHVVx5/Picsart-26-05-02-13-37-52-226.png', label: 'The Regime' },
-  { src: 'https://i.postimg.cc/sfmbJNvj/Picsart-26-05-02-14-03-52-294.png', label: 'The Associate' }
-];
+  { src: 'https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png', label: 'Koko — The Small Cat' },
+  { src: 'https://i.postimg.cc/K8Gp4jRf/file-00000000737471f4b370c47d2af6f92a.png',    label: 'Princess' },
+  { src: 'https://i.postimg.cc/wTsbnZnk/file-00000000d5787243ab334e57fc0fb8bd.png',    label: 'The Regime' },
+  { src: 'https://i.postimg.cc/tRvLKhJx/file-00000000a8fc71f4b40a31d92d1fac0d.png',   label: 'The Associate' }
+]
 let heroIdx = 0
 const heroImg   = document.getElementById('hero-rotating-img')
 const heroLabel = document.getElementById('hero-char-label')
