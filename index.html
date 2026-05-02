@@ -625,18 +625,18 @@ footer {
       <a href="#lore">Lore</a>
       <a href="#characters">Characters</a>
       <a href="#tokenomics">Token</a>
-      <a href="#presale">Presale</a>
+      <a href="/presale">Presale</a>
       <a href="#airdrop">Airdrop</a>
       <a href="#roadmap">Roadmap</a>
     </div>
     <div style="display:flex;gap:10px;align-items:center">
       <div class="nav-desktop-cta">
-        <a class="btn-ghost nav-cta" href="https://t.me/KokoKairokuBot" target="_blank">Start Airdrop</a>
-        <a class="btn-ghost nav-cta" href="#presale">Buy $KOKO</a>
+        <a class="btn-ghost nav-cta" href="/airdrop" target="_blank">Start Airdrop</a>
+        <a class="btn-ghost nav-cta" href="/presale">Buy $KOKO</a>
       </div>
       <div class="nav-mobile-cta">
-        <a class="btn-ghost nav-cta" href="https://t.me/KokoKairokuBot" target="_blank" style="padding:6px 12px;font-size:9px">Airdrop</a>
-        <a class="btn-ghost nav-cta" href="#presale" style="padding:6px 12px;font-size:9px">Buy</a>
+        <a class="btn-ghost nav-cta" href="/airdrop" target="_blank" style="padding:6px 12px;font-size:9px">Airdrop</a>
+        <a class="btn-ghost nav-cta" href="/presale" style="padding:6px 12px;font-size:9px">Buy</a>
       </div>
     </div>
   </div>
@@ -659,8 +659,8 @@ footer {
     <div class="hero-quote" style="margin-top:32px">The regime thought they had won. They were wrong.</div>
     <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;animation:fadeUp 1s ease 0.45s both">Shadow Phase is live — 30% bonus active</div>
     <div class="hero-cta-row">
-      <a class="btn-primary" href="https://t.me/KokoKairokuBot" target="_blank">Start Airdrop</a>
-      <a class="btn-primary" href="#presale">Buy $KOKO</a>
+      <a class="btn-primary" href="/airdrop" target="_blank">Start Airdrop</a>
+      <a class="btn-primary" href="/presale">Buy $KOKO</a>
       <a class="btn-ghost" href="#lore">Read the Lore</a>
     </div>
     <div style="font-size:10px;color:var(--muted);letter-spacing:0.08em;margin-top:-44px;margin-bottom:20px;animation:fadeUp 1s ease 0.6s both">Secure checkout via Helio (MoonPay). Card and crypto accepted.</div>
@@ -797,7 +797,7 @@ footer {
         <input
           id="checker-input"
           type="text"
-          placeholder="@username or first name"
+          placeholder="@username, first name or wallet"
           style="flex:1;min-width:180px;background:var(--bg);border:0.5px solid var(--border3);border-radius:3px;padding:12px 16px;font-family:'Space Mono',monospace;font-size:11px;color:var(--white);letter-spacing:0.06em;outline:none"
           onkeydown="if(event.key==='Enter')checkAirdrop()"
         />
@@ -807,7 +807,7 @@ footer {
           style="padding:12px 24px;font-size:10px;white-space:nowrap"
         >Check Status</button>
       </div>
-      <div style="font-size:9px;color:var(--muted);letter-spacing:0.06em">Accepts @username or first name · Auto-refreshes every 30s</div>
+      <div style="font-size:9px;color:var(--muted);letter-spacing:0.06em">Accepts @username, first name, or Solana wallet · Auto-refreshes every 30s</div>
       <div id="checker-result" style="margin-top:24px;display:none"></div>
     </div>
 
@@ -891,7 +891,7 @@ footer {
           </div>
         </div>
         <div class="char-image">
-          <img src="https://i.postimg.cc/j2RH3c3B/Picsart-26-05-02-14-20-16-410.png" alt="Chiisana Neko" onerror="this.parentElement.innerHTML='<div class=\'char-image-placeholder\'>猫</div>'">
+          <img src="https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png" alt="Koko" onerror="this.parentElement.innerHTML='<div class=\'char-image-placeholder\'>猫</div>'">
         </div>
         <div class="char-card-bg">影</div>
       </div>
@@ -1155,7 +1155,7 @@ footer {
       <a class="social-link" href="https://t.me/KairokuWorld" target="_blank">
         <span>TG</span> Telegram
       </a>
-      <a class="social-link" href="https://t.me/KokoKairokuBot" target="_blank">
+      <a class="social-link" href="/airdrop" target="_blank">
         <span>TG</span> Airdrop Bot
       </a>
       <a class="social-link" href="https://kairokuworld.gitbook.io/kairokuworld-docs" target="_blank">
@@ -1249,7 +1249,7 @@ async function getAllUsers() {
   // users table: telegram_id, username, first_name, points, tokens_allocated
   // No rank column in users — we derive rank client-side from points order
   const raw = await supaFetch(
-    'users?select=username,first_name,points,tokens_allocated&order=points.desc&limit=500'
+    'users?select=username,first_name,points,tokens_allocated,wallet&order=points.desc&limit=500'
   )
 
   // Surface any Supabase error directly in the leaderboard UI
@@ -1287,11 +1287,13 @@ async function checkAirdrop() {
     const allUsers = await getAllUsers()
     const totalPoints = allUsers.reduce((sum, u) => sum + (u.points || 0), 0)
 
-    // Match by @username OR first_name (case-insensitive)
+    // Match by @username, first_name, or wallet address (case-insensitive)
     const query = raw.replace(/^@/, '').toLowerCase()
+    const isWallet = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(raw.trim())
     const user = allUsers.find(u =>
       (u.username && u.username.toLowerCase() === query) ||
-      (u.first_name && u.first_name.toLowerCase() === query)
+      (u.first_name && u.first_name.toLowerCase() === query) ||
+      (isWallet && u.wallet && u.wallet.toLowerCase() === raw.trim().toLowerCase())
     )
 
     if (!user) {
@@ -1306,7 +1308,7 @@ async function checkAirdrop() {
             <div style="font-size:11px;color:var(--muted);line-height:1.9;margin-bottom:28px">
               Start the Telegram bot to earn points, climb the leaderboard,<br>and secure your $KOKO airdrop allocation.
             </div>
-            <a href="https://t.me/KokoKairokuBot" target="_blank" class="btn-primary"
+            <a href="/airdrop" target="_blank" class="btn-primary"
                style="display:inline-block;padding:13px 32px;font-size:10px;text-decoration:none">
               → Join via @KokoKairokuBot
             </a>
@@ -1332,8 +1334,9 @@ async function checkAirdrop() {
       : `<span style="color:var(--accent)">#${rank}</span>`
 
     const displayName = user.username || user.first_name || query
+    const shareUrl = `https://kairokuworld.xyz/airdrop?user=${encodeURIComponent(user.username || user.first_name || query)}`
     const tweetText = encodeURIComponent(
-      `I'm ranked #${rank} in the $KOKO airdrop with ${user.points.toLocaleString()} points — est. ${finalAlloc.toLocaleString()} $KOKO 🏮\n\nJoin the village 👉 https://kairokuworld.xyz\n@KokoKairoku`
+      `I'm ranked #${rank} in the $KOKO airdrop with ${user.points.toLocaleString()} points — est. ${finalAlloc.toLocaleString()} $KOKO 🏮\n\nCheck my rank 👉 ${shareUrl}\n@KokoKairoku`
     )
     const tweetUrl = `https://twitter.com/intent/tweet?text=${tweetText}`
 
@@ -1451,16 +1454,30 @@ async function refreshAll() {
   }
 }
 
-// Boot
+// Boot — auto-fill checker from ?user= URL param
+const _urlParams = new URLSearchParams(window.location.search)
+const _prefilledUser = _urlParams.get('user')
+if (_prefilledUser) {
+  const _inp = document.getElementById('checker-input')
+  if (_inp) {
+    _inp.value = _prefilledUser
+    // Scroll to checker and run it after leaderboard loads
+    setTimeout(() => {
+      document.getElementById('airdrop-checker')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      checkAirdrop()
+    }, 600)
+  }
+}
 loadLeaderboard()
 startAutoRefresh()
 
 // ── HERO CHARACTER ROTATION ──────────────────────────────────────────
 const heroChars = [
-  { src: 'https://i.postimg.cc/cCfzwFgR/Picsart-26-05-02-13-40-36-651.png', label: 'Princess' },
-  { src: 'https://i.postimg.cc/TwGHVVx5/Picsart-26-05-02-13-37-52-226.png', label: 'The Regime' },
-  { src: 'https://i.postimg.cc/sfmbJNvj/Picsart-26-05-02-14-03-52-294.png', label: 'The Associate' }
-];
+  { src: 'https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png', label: 'Koko — The Small Cat' },
+  { src: 'https://i.postimg.cc/K8Gp4jRf/file-00000000737471f4b370c47d2af6f92a.png',    label: 'Princess' },
+  { src: 'https://i.postimg.cc/wTsbnZnk/file-00000000d5787243ab334e57fc0fb8bd.png',    label: 'The Regime' },
+  { src: 'https://i.postimg.cc/tRvLKhJx/file-00000000a8fc71f4b40a31d92d1fac0d.png',   label: 'The Associate' }
+]
 let heroIdx = 0
 const heroImg   = document.getElementById('hero-rotating-img')
 const heroLabel = document.getElementById('hero-char-label')
