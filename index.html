@@ -1249,7 +1249,7 @@ async function getAllUsers() {
   // users table: telegram_id, username, first_name, points, tokens_allocated
   // No rank column in users — we derive rank client-side from points order
   const raw = await supaFetch(
-    'users?select=username,first_name,points,tokens_allocated,wallet&order=points.desc&limit=500'
+    'users?select=username,first_name,points,tokens_allocated,wallet_address&order=points.desc&limit=500'
   )
 
   // Surface any Supabase error directly in the leaderboard UI
@@ -1293,7 +1293,7 @@ async function checkAirdrop() {
     const user = allUsers.find(u =>
       (u.username && u.username.toLowerCase() === query) ||
       (u.first_name && u.first_name.toLowerCase() === query) ||
-      (isWallet && u.wallet && u.wallet.toLowerCase() === raw.trim().toLowerCase())
+      (isWallet && u.wallet_address && u.wallet_address.toLowerCase() === raw.trim().toLowerCase())
     )
 
     if (!user) {
