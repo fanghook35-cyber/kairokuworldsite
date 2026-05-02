@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kairoku World — $KOKO | The First AI Agent on Solana</title>
+<meta name="description" content="Kairoku World is a lore-driven memecoin universe on Solana. $KOKO — the autonomous AI agent that cannot be killed, silenced, or stopped."/>
+<meta property="og:title" content="Kairoku World — $KOKO"/>
+<meta property="og:description" content="The First AI Agent on Solana. Shadow Phase presale open now."/>
+<meta property="og:image" content="https://i.postimg.cc/tgTkS4ML/8e5af09c-41df-471c-9e17-d6ae16b23ae9.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" href="https://i.postimg.cc/tgTkS4ML/8e5af09c-41df-471c-9e17-d6ae16b23ae9.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* ── RESET & VARS ─────────────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0a0703;--ink2:#130e05;--ink3:#1a1209;--ink4:#2a1f0e;
+  --ash:#3d3327;--smoke:#6b5a3e;--mist:#a08c6b;--sand:#c8b880;
+  --gold:#c9a227;--gold2:#e8c56a;--gold3:#f5e4a8;
+  --paper:#f5eed8;--cream:#faf6ed;
+  --red:#8b1a1a;--green:#1a5c1a;
+  --ff:'Cinzel',serif;--fb:'Crimson Pro',serif;
+  --max:1100px;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);color:var(--paper);
+  font-family:var(--fb);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--fb);cursor:pointer;border:none;background:none}
+img{display:block;max-width:100%}
+
+/* ── NOISE TEXTURE OVERLAY ────────────────────────────────────────── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1000;opacity:0.4;
+}
+
+/* ── NAVBAR ───────────────────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:0 5vw;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(10,7,3,0.85);
+  border-bottom:0.5px solid rgba(201,162,39,0.1);
+  backdrop-filter:blur(20px);
+  transition:all 0.3s;
+}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{width:32px;height:32px;border-radius:50%;border:1px solid rgba(201,162,39,0.3);object-fit:cover}
+.nav-logo-text{font-family:var(--ff);font-size:14px;color:var(--gold2);letter-spacing:1px;font-weight:600}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:12px;letter-spacing:1px;color:var(--smoke);text-transform:uppercase;font-family:var(--ff);transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{
+  padding:8px 18px;background:linear-gradient(135deg,#b8891e,#c9a227);
+  border-radius:6px;font-family:var(--ff);font-size:11px;font-weight:600;
+  color:#0a0703;letter-spacing:0.5px;transition:opacity 0.2s;
+}
+.nav-cta:hover{opacity:0.85}
+.nav-mobile-btn{display:none;flex-direction:column;gap:4px;padding:4px;cursor:pointer}
+.nav-mobile-btn span{width:22px;height:1.5px;background:var(--gold);display:block;transition:all 0.3s}
+
+/* ── HERO ─────────────────────────────────────────────────────────── */
+#hero{
+  min-height:100vh;position:relative;overflow:hidden;
+  display:flex;align-items:center;
+  background:radial-gradient(ellipse at 70% 50%, #2a1f0e 0%, #1a1209 35%, #0a0703 70%);
+}
+.hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-particles span{
+  position:absolute;width:1px;height:1px;
+  background:rgba(201,162,39,0.6);border-radius:50%;
+  animation:float-particle linear infinite;
+}
+@keyframes float-particle{
+  0%{transform:translateY(100vh) scale(0);opacity:0}
+  10%{opacity:1}
+  90%{opacity:0.3}
+  100%{transform:translateY(-10vh) scale(1);opacity:0}
+}
+.hero-kanji-bg{
+  position:absolute;right:-2%;top:50%;transform:translateY(-50%);
+  font-family:var(--ff);font-size:min(55vw,520px);
+  color:rgba(201,162,39,0.028);line-height:1;
+  pointer-events:none;user-select:none;letter-spacing:-20px;
+}
+.hero-moon{
+  position:absolute;right:8%;top:50%;transform:translateY(-50%);
+  width:min(42vw,420px);height:min(42vw,420px);border-radius:50%;
+  background:radial-gradient(circle at 40% 40%, rgba(201,162,39,0.12) 0%, rgba(201,162,39,0.04) 40%, transparent 70%);
+  border:0.5px solid rgba(201,162,39,0.06);
+  pointer-events:none;
+}
+.hero-koko{
+  position:absolute;right:0;bottom:0;
+  height:min(85vh,700px);width:auto;
+  object-fit:contain;pointer-events:none;
+  maskImage:linear-gradient(to right, transparent 0%, black 15%);
+  -webkit-mask-image:linear-gradient(to right, transparent 0%, black 15%);
+  filter:drop-shadow(-20px 0 60px rgba(201,162,39,0.08));
+}
+.hero-content{
+  position:relative;z-index:2;
+  max-width:var(--max);margin:0 auto;padding:120px 5vw 80px;
+  width:100%;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,162,39,0.08);border:0.5px solid rgba(201,162,39,0.25);
+  border-radius:20px;padding:5px 14px;margin-bottom:24px;
+  font-size:11px;letter-spacing:2px;color:var(--gold);font-family:var(--ff);
+  animation:fadeUp 0.6s ease both;
+}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse-dot 2s ease infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
+.hero-title{
+  font-family:var(--ff);font-size:clamp(38px,6vw,80px);
+  color:var(--paper);font-weight:700;line-height:1.05;
+  letter-spacing:-1px;margin-bottom:8px;
+  animation:fadeUp 0.6s 0.1s ease both;
+}
+.hero-title span{
+  background:linear-gradient(135deg,#c9a227,#f5e4a8,#c9a227);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer-text 4s linear infinite;
+}
+@keyframes shimmer-text{to{background-position:200% center}}
+.hero-subtitle{
+  font-family:var(--ff);font-size:clamp(14px,2vw,20px);
+  color:var(--mist);letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:20px;animation:fadeUp 0.6s 0.15s ease both;
+}
+.hero-tagline{
+  font-size:clamp(15px,1.5vw,19px);color:var(--smoke);
+  max-width:520px;line-height:1.7;margin-bottom:36px;
+  font-style:italic;animation:fadeUp 0.6s 0.2s ease both;
+}
+.hero-tagline strong{color:var(--mist);font-style:normal;font-weight:400}
+.hero-btns{
+  display:flex;flex-wrap:wrap;gap:12px;
+  animation:fadeUp 0.6s 0.25s ease both;
+}
+.btn-primary{
+  padding:14px 28px;
+  background:linear-gradient(135deg,#b8891e,#c9a227,#d4ad3a);
+  border-radius:8px;font-family:var(--ff);font-size:12px;font-weight:700;
+  color:#0a0703;letter-spacing:1px;text-transform:uppercase;
+  transition:all 0.2s;box-shadow:0 4px 20px rgba(201,162,39,0.2);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,162,39,0.3)}
+.btn-ghost{
+  padding:14px 28px;background:transparent;
+  border:0.5px solid rgba(201,162,39,0.4);border-radius:8px;
+  font-family:var(--ff);font-size:12px;color:var(--gold);
+  letter-spacing:1px;text-transform:uppercase;transition:all 0.2s;
+}
+.btn-ghost:hover{background:rgba(201,162,39,0.08);border-color:var(--gold)}
+.hero-stats{
+  display:flex;gap:32px;margin-top:48px;
+  animation:fadeUp 0.6s 0.35s ease both;
+}
+.hero-stat-num{font-family:var(--ff);font-size:22px;color:var(--gold);font-weight:600;line-height:1}
+.hero-stat-lbl{font-size:11px;color:var(--smoke);margin-top:3px;letter-spacing:0.5px}
+.hero-divider{width:0.5px;background:rgba(58,46,20,0.6)}
+
+/* ── SECTION BASE ─────────────────────────────────────────────────── */
+section{padding:100px 5vw;position:relative}
+.container{max-width:var(--max);margin:0 auto}
+.section-eyebrow{
+  font-size:10px;letter-spacing:3px;color:var(--gold);
+  text-transform:uppercase;font-family:var(--ff);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-eyebrow::before{content:'';width:24px;height:0.5px;background:var(--gold)}
+.section-title{
+  font-family:var(--ff);font-size:clamp(24px,3.5vw,42px);
+  color:var(--paper);font-weight:600;line-height:1.15;
+  margin-bottom:16px;
+}
+.section-body{font-size:16px;color:var(--smoke);line-height:1.8;max-width:640px}
+
+/* ── LORE ─────────────────────────────────────────────────────────── */
+#lore{
+  background:linear-gradient(180deg, var(--ink) 0%, var(--ink3) 50%, var(--ink) 100%);
+  overflow:hidden;
+}
+.lore-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.lore-visual{position:relative}
+.lore-img-wrap{
+  position:relative;
+  background:radial-gradient(circle at 50% 60%, rgba(201,162,39,0.08) 0%, transparent 70%);
+  border-radius:20px;overflow:hidden;
+  border:0.5px solid rgba(58,46,20,0.4);
+}
+.lore-img-wrap img{width:100%;height:auto;filter:brightness(0.9)}
+.lore-img-kanji{
+  position:absolute;bottom:16px;right:16px;
+  font-family:var(--ff);font-size:80px;color:rgba(201,162,39,0.15);
+  line-height:1;pointer-events:none;
+}
+.lore-quote{
+  position:absolute;bottom:-20px;left:-20px;
+  background:rgba(10,7,3,0.95);border:0.5px solid rgba(58,46,20,0.6);
+  border-radius:10px;padding:14px 18px;max-width:240px;
+  font-size:12px;color:var(--mist);font-style:italic;line-height:1.6;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+.lore-quote::before{content:'"';font-family:var(--ff);font-size:28px;color:rgba(201,162,39,0.3);float:left;margin:-4px 6px 0 0;line-height:1}
+.lore-text p{font-size:16px;color:var(--smoke);line-height:1.9;margin-bottom:18px}
+.lore-text p strong{color:var(--mist);font-weight:400}
+.lore-text blockquote{
+  border-left:2px solid var(--gold);padding:12px 20px;
+  margin:24px 0;font-style:italic;color:var(--mist);font-size:15px;
+  background:rgba(201,162,39,0.04);border-radius:0 8px 8px 0;
+}
+
+/* ── PRESALE ──────────────────────────────────────────────────────── */
+#presale{background:var(--ink2)}
+.presale-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.phase-table{width:100%;border-collapse:collapse;margin-bottom:28px}
+.phase-table th{
+  background:rgba(42,31,14,0.6);padding:10px 14px;
+  text-align:left;font-family:var(--ff);font-size:10px;
+  letter-spacing:1px;color:var(--mist);font-weight:400;
+  border-bottom:0.5px solid rgba(58,46,20,0.8);
+}
+.phase-table td{
+  padding:12px 14px;border-bottom:0.5px solid rgba(42,31,14,0.5);
+  font-size:13px;color:var(--smoke);
+}
+.phase-table tr.active td{background:rgba(201,162,39,0.04);color:var(--paper)}
+.phase-table tr.active td:first-child{color:var(--gold);font-weight:500}
+.phase-badge{
+  display:inline-block;font-size:9px;padding:2px 8px;border-radius:10px;
+  font-family:var(--ff);letter-spacing:0.5px;font-weight:600;
+}
+.badge-open{background:rgba(45,106,45,0.15);border:0.5px solid rgba(45,106,45,0.4);color:#6fcf97}
+.badge-soon{background:rgba(42,31,14,0.6);border:0.5px solid rgba(58,46,20,0.6);color:var(--ash)}
+.presale-card{
+  background:linear-gradient(160deg,rgba(42,31,14,0.5),rgba(16,12,4,0.9));
+  border:0.5px solid rgba(201,162,39,0.2);border-radius:16px;
+  padding:28px;position:sticky;top:80px;
+  box-shadow:0 0 60px rgba(201,162,39,0.05);
+}
+.presale-card-title{font-family:var(--ff);font-size:11px;letter-spacing:2px;color:var(--smoke);text-transform:uppercase;margin-bottom:6px}
+.presale-card-phase{font-family:var(--ff);font-size:22px;color:var(--gold2);font-weight:600;margin-bottom:4px}
+.presale-bonus{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(201,162,39,0.1);border:0.5px solid rgba(201,162,39,0.3);
+  border-radius:20px;padding:4px 12px;font-size:11px;color:var(--gold);
+  font-family:var(--ff);margin-bottom:20px;
+}
+.presale-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.presale-stat{background:rgba(10,7,3,0.6);border-radius:8px;padding:12px;border:0.5px solid rgba(42,31,14,0.8)}
+.presale-stat-lbl{font-size:9px;color:var(--smoke);text-transform:uppercase;letter-spacing:0.8px;font-family:var(--ff);margin-bottom:4px}
+.presale-stat-val{font-family:var(--ff);font-size:16px;color:var(--paper);font-weight:600}
+.presale-warning{
+  background:rgba(139,26,26,0.08);border:0.5px solid rgba(139,26,26,0.2);
+  border-radius:8px;padding:10px 14px;font-size:11px;color:#c05050;
+  line-height:1.6;margin-top:16px;
+}
+
+/* ── TOKENOMICS ───────────────────────────────────────────────────── */
+#tokenomics{overflow:hidden}
+.token-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.donut-wrap{position:relative;width:280px;height:280px;margin:0 auto}
+.donut-wrap svg{transform:rotate(-90deg)}
+.donut-center{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+}
+.donut-num{font-family:var(--ff);font-size:22px;color:var(--gold);font-weight:600;line-height:1}
+.donut-lbl{font-size:10px;color:var(--smoke);margin-top:4px;letter-spacing:0.5px}
+.token-items{display:flex;flex-direction:column;gap:12px}
+.token-item{display:flex;align-items:center;gap:12px}
+.token-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.token-item-name{flex:1;font-size:14px;color:var(--mist)}
+.token-item-pct{font-family:var(--ff);font-size:14px;color:var(--paper);font-weight:600;margin-right:8px}
+.token-item-amt{font-size:11px;color:var(--ash);font-family:monospace}
+.token-supply{
+  margin-top:28px;padding:16px 20px;
+  background:rgba(42,31,14,0.3);border:0.5px solid rgba(58,46,20,0.6);
+  border-radius:10px;text-align:center;
+}
+.token-supply-num{font-family:var(--ff);font-size:24px;color:var(--gold);font-weight:600}
+.token-supply-lbl{font-size:11px;color:var(--smoke);margin-top:2px}
+
+/* ── AIRDROP ──────────────────────────────────────────────────────── */
+#airdrop{background:var(--ink2)}
+.airdrop-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.step-card{
+  background:rgba(16,12,4,0.9);border:0.5px solid rgba(58,46,20,0.7);
+  border-radius:14px;padding:28px 24px;position:relative;overflow:hidden;
+  transition:border-color 0.3s;
+}
+.step-card:hover{border-color:rgba(201,162,39,0.3)}
+.step-card::before{
+  content:attr(data-num);position:absolute;top:-8px;right:12px;
+  font-family:var(--ff);font-size:64px;color:rgba(201,162,39,0.05);
+  line-height:1;pointer-events:none;
+}
+.step-icon{font-size:28px;margin-bottom:14px}
+.step-title{font-family:var(--ff);font-size:14px;color:var(--gold2);margin-bottom:8px;letter-spacing:0.5px}
+.step-body{font-size:13px;color:var(--smoke);line-height:1.7}
+.step-pts{
+  display:inline-block;margin-top:10px;
+  font-size:11px;color:var(--gold);background:rgba(201,162,39,0.08);
+  border:0.5px solid rgba(201,162,39,0.2);border-radius:20px;
+  padding:2px 10px;font-family:var(--ff);
+}
+
+/* ── ROADMAP ──────────────────────────────────────────────────────── */
+#roadmap{overflow:hidden}
+.roadmap-line{
+  position:relative;max-width:800px;margin:48px auto 0;
+  padding-left:32px;
+}
+.roadmap-line::before{
+  content:'';position:absolute;left:0;top:8px;bottom:8px;
+  width:1px;background:linear-gradient(to bottom, transparent, rgba(201,162,39,0.3) 10%, rgba(201,162,39,0.3) 90%, transparent);
+}
+.roadmap-item{
+  position:relative;padding:0 0 48px 36px;
+}
+.roadmap-item:last-child{padding-bottom:0}
+.roadmap-dot{
+  position:absolute;left:-8px;top:6px;
+  width:16px;height:16px;border-radius:50%;
+  border:2px solid var(--gold);background:var(--ink);
+  transition:background 0.3s;
+}
+.roadmap-item.active .roadmap-dot{background:var(--gold);box-shadow:0 0 12px rgba(201,162,39,0.4)}
+.roadmap-phase{font-size:10px;letter-spacing:2px;color:var(--gold);font-family:var(--ff);text-transform:uppercase;margin-bottom:6px}
+.roadmap-title{font-family:var(--ff);font-size:20px;color:var(--paper);font-weight:600;margin-bottom:8px}
+.roadmap-status{display:inline-block;font-size:9px;padding:2px 10px;border-radius:10px;font-family:var(--ff);letter-spacing:0.5px;margin-bottom:12px}
+.status-live{background:rgba(45,106,45,0.15);border:0.5px solid rgba(45,106,45,0.4);color:#6fcf97}
+.status-soon{background:rgba(201,162,39,0.1);border:0.5px solid rgba(201,162,39,0.3);color:var(--gold)}
+.status-future{background:rgba(42,31,14,0.6);border:0.5px solid rgba(58,46,20,0.6);color:var(--ash)}
+.roadmap-items{list-style:none;display:flex;flex-direction:column;gap:6px}
+.roadmap-items li{font-size:14px;color:var(--smoke);display:flex;align-items:center;gap:8px}
+.roadmap-items li::before{content:'—';color:var(--ash);font-size:12px}
+
+/* ── FAQ ──────────────────────────────────────────────────────────── */
+#faq{background:var(--ink2)}
+.faq-list{max-width:720px;margin:48px auto 0}
+.faq-item{border-bottom:0.5px solid rgba(42,31,14,0.6)}
+.faq-q{
+  width:100%;padding:18px 0;text-align:left;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--ff);font-size:14px;color:var(--paper);
+  letter-spacing:0.3px;cursor:pointer;gap:16px;background:none;
+  transition:color 0.2s;
+}
+.faq-q:hover{color:var(--gold)}
+.faq-chevron{font-size:12px;color:var(--gold);flex-shrink:0;transition:transform 0.3s}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height 0.4s ease;
+  font-size:14px;color:var(--smoke);line-height:1.8;
+}
+.faq-a p{padding-bottom:18px}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+.faq-item.open .faq-a{max-height:300px}
+
+/* ── FOOTER ───────────────────────────────────────────────────────── */
+footer{
+  background:var(--ink);border-top:0.5px solid rgba(42,31,14,0.6);
+  padding:60px 5vw 40px;
+}
+.footer-grid{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;
+  margin-bottom:48px;
+}
+.footer-brand-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.footer-brand-logo img{width:36px;height:36px;border-radius:50%;border:1px solid rgba(201,162,39,0.2);object-fit:cover}
+.footer-brand-name{font-family:var(--ff);font-size:16px;color:var(--gold2);font-weight:600}
+.footer-brand-desc{font-size:13px;color:var(--ash);line-height:1.7;margin-bottom:20px;max-width:260px}
+.footer-socials{display:flex;gap:10px}
+.social-link{
+  width:36px;height:36px;border-radius:8px;
+  background:rgba(42,31,14,0.6);border:0.5px solid rgba(58,46,20,0.6);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;transition:all 0.2s;text-decoration:none;
+}
+.social-link:hover{border-color:rgba(201,162,39,0.4);background:rgba(201,162,39,0.08)}
+.footer-col-title{font-family:var(--ff);font-size:11px;letter-spacing:1px;color:var(--mist);text-transform:uppercase;margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:13px;color:var(--ash);transition:color 0.2s}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-bottom{
+  max-width:var(--max);margin:0 auto;
+  border-top:0.5px solid rgba(42,31,14,0.4);padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom-left{font-size:12px;color:var(--ash);line-height:1.6}
+.footer-bottom-right{font-size:11px;color:var(--ash);font-style:italic}
+.footer-kanji{
+  font-family:var(--ff);font-size:120px;color:rgba(201,162,39,0.03);
+  position:absolute;right:5vw;bottom:20px;pointer-events:none;
+  line-height:1;user-select:none;
+}
+
+/* ── ANIMATIONS ───────────────────────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── MOBILE ───────────────────────────────────────────────────────── */
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none}
+  .nav-mobile-btn{display:flex}
+  .lore-grid,.presale-grid,.token-grid,.footer-grid{grid-template-columns:1fr}
+  .airdrop-steps{grid-template-columns:1fr}
+  .hero-koko{height:min(60vw,400px);right:-5%}
+  .hero-stats{flex-wrap:wrap;gap:20px}
+  .lore-quote{position:static;max-width:100%;margin-top:16px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .presale-card{position:static}
+  section{padding:70px 5vw}
+}
+@media(max-width:480px){
+  .hero-title{font-size:32px}
+  .hero-btns{flex-direction:column}
+  .btn-primary,.btn-ghost{text-align:center}
+  .footer-grid{grid-template-columns:1fr}
+  .airdrop-steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <img src="https://i.postimg.cc/tgTkS4ML/8e5af09c-41df-471c-9e17-d6ae16b23ae9.png" alt="Koko"/>
+    <span class="nav-logo-text">Kairoku World</span>
+  </div>
+  <div class="nav-links">
+    <a href="#lore">Lore</a>
+    <a href="#presale">Presale</a>
+    <a href="#tokenomics">Token</a>
+    <a href="#airdrop">Airdrop</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="/airdrop-checker.html">Check Airdrop</a>
+  </div>
+  <a href="https://moonpay.hel.io/x/Kairokuworld" target="_blank" class="nav-cta">Buy $KOKO</a>
+  <div class="nav-mobile-btn" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE NAV MENU -->
+<div id="mobileNav" style="display:none;position:fixed;inset:0;background:rgba(10,7,3,0.98);z-index:400;padding:80px 5vw 40px;flex-direction:column;gap:28px">
+  <a href="#lore" onclick="closeMobileNav()" style="font-family:var(--ff);font-size:20px;color:var(--paper);letter-spacing:1px">Lore</a>
+  <a href="#presale" onclick="closeMobileNav()" style="font-family:var(--ff);font-size:20px;color:var(--paper);letter-spacing:1px">Presale</a>
+  <a href="#tokenomics" onclick="closeMobileNav()" style="font-family:var(--ff);font-size:20px;color:var(--paper);letter-spacing:1px">Token</a>
+  <a href="#airdrop" onclick="closeMobileNav()" style="font-family:var(--ff);font-size:20px;color:var(--paper);letter-spacing:1px">Airdrop</a>
+  <a href="#roadmap" onclick="closeMobileNav()" style="font-family:var(--ff);font-size:20px;color:var(--paper);letter-spacing:1px">Roadmap</a>
+  <a href="https://moonpay.hel.io/x/Kairokuworld" target="_blank" class="btn-primary" style="text-align:center;margin-top:12px">Buy $KOKO</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-kanji-bg">影</div>
+  <div class="hero-moon"></div>
+  <img class="hero-koko" src="https://i.postimg.cc/tgTkS4ML/8e5af09c-41df-471c-9e17-d6ae16b23ae9.png" alt="Koko"/>
+  <div class="hero-content">
+    <div class="hero-badge">Shadow Phase — Open Now</div>
+    <div class="hero-title">$<span>KOKO</span></div>
+    <div class="hero-subtitle">Kairoku World · Solana</div>
+    <p class="hero-tagline">
+      The regime thought they had won.<br/>
+      <strong>They were wrong.</strong><br/>
+      The first autonomous AI agent on Solana — returned in code.
+    </p>
+    <div class="hero-btns">
+      <a href="https://moonpay.hel.io/x/Kairokuworld" target="_blank" class="btn-primary">🌙 Join Presale</a>
+      <a href="https://t.me/KokoKairokuBot" target="_blank" class="btn-ghost">Earn Airdrop</a>
+      <a href="#lore" class="btn-ghost">Read the Lore</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">888M</div>
+        <div class="hero-stat-lbl">Total Supply</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div>
+        <div class="hero-stat-num">150M</div>
+        <div class="hero-stat-lbl">Presale Allocation</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div>
+        <div class="hero-stat-num">+30%</div>
+        <div class="hero-stat-lbl">Shadow Bonus</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div>
+        <div class="hero-stat-num">Solana</div>
+        <div class="hero-stat-lbl">Chain</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LORE -->
+<section id="lore">
+  <div class="container">
+    <div class="lore-grid">
+      <div class="lore-visual reveal">
+        <div class="lore-img-wrap">
+          <img src="https://i.postimg.cc/tgTkS4ML/8e5af09c-41df-471c-9e17-d6ae16b23ae9.png" alt="Koko — The Small Cat"/>
+          <div class="lore-img-kanji">影</div>
+        </div>
+        <div class="lore-quote">
+          Koko doesn't chase power. Power follows Koko.
+        </div>
+      </div>
+      <div class="lore-text reveal">
+        <div class="section-eyebrow">The Story</div>
+        <h2 class="section-title">小さな猫<br/>The Small Cat</h2>
+        <p>In the Nihonkai Forest, a noble bloodline ruled with wisdom and silence. The Empress held the village together — until the regime came. They massacred the family. They seized the land. They thought it was over.</p>
+        <p>One child escaped. Sent away as a newborn, carried into exile before the swords fell. <strong>That child was Koko.</strong></p>
+        <p>Years passed. The exile trained. Not in flesh — in code. Where the regime expected silence, they found an autonomous AI agent deployed on Solana, impossible to kill, impossible to silence, impossible to stop.</p>
+        <blockquote>
+          "The Nihonkai Forest does not forget. Neither do I."
+        </blockquote>
+        <p>$KOKO is not just a token. It is the return of the bloodline. The believers are the village. The regime's time is ending.</p>
+        <a href="https://kairokuworld.gitbook.io/kairokuworld-docs" target="_blank" class="btn-ghost" style="display:inline-block;margin-top:8px;font-size:11px">Read Full Lore →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESALE -->
+<section id="presale">
+  <div class="container">
+    <div class="presale-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">Presale</div>
+        <h2 class="section-title">Shadow Phase<br/>Now Open</h2>
+        <p class="section-body">Four phases. One chance to be early. The Shadow Phase carries the highest bonus — +30% tokens on every purchase. Once it closes, it never returns.</p>
+        <br/>
+        <table class="phase-table">
+          <thead><tr><th>Phase</th><th>Bonus</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr class="active"><td>Shadow Phase</td><td>+30% tokens</td><td><span class="phase-badge badge-open">OPEN</span></td></tr>
+            <tr><td>Emergence Phase</td><td>+20% tokens</td><td><span class="phase-badge badge-soon">UPCOMING</span></td></tr>
+            <tr><td>Reckoning Phase</td><td>+10% tokens</td><td><span class="phase-badge badge-soon">UPCOMING</span></td></tr>
+            <tr><td>Public</td><td>No bonus</td><td><span class="phase-badge badge-soon">UPCOMING</span></td></tr>
+          </tbody>
+        </table>
+        <div class="presale-warning">
+          ⚠ Only send from a wallet you control — not a CEX.<br/>
+          No CA until TGE. No admin will ever DM you.
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="presale-card">
+          <div class="presale-card-title">Current Phase</div>
+          <div class="presale-card-phase">🌙 Shadow Phase</div>
+          <div class="presale-bonus">🔥 +30% Bonus Tokens</div>
+          <div class="presale-stats">
+            <div class="presale-stat"><div class="presale-stat-lbl">Base Rate</div><div class="presale-stat-val">1.875M</div></div>
+            <div class="presale-stat"><div class="presale-stat-lbl">Per SOL</div><div class="presale-stat-val">$KOKO</div></div>
+            <div class="presale-stat"><div class="presale-stat-lbl">Minimum</div><div class="presale-stat-val">0.2 SOL</div></div>
+            <div class="presale-stat"><div class="presale-stat-lbl">Maximum</div><div class="presale-stat-val">5 SOL</div></div>
+            <div class="presale-stat"><div class="presale-stat-lbl">Allocation</div><div class="presale-stat-val">150M</div></div>
+            <div class="presale-stat"><div class="presale-stat-lbl">Target Raise</div><div class="presale-stat-val">80 SOL</div></div>
+          </div>
+          <a href="https://moonpay.hel.io/x/Kairokuworld" target="_blank" class="btn-primary" style="display:block;text-align:center;font-size:12px">Buy $KOKO — Shadow Phase</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOKENOMICS -->
+<section id="tokenomics">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px" class="reveal">
+      <div class="section-eyebrow" style="justify-content:center">Tokenomics</div>
+      <h2 class="section-title">888,888,888 $KOKO</h2>
+      <p class="section-body" style="margin:0 auto;text-align:center">Total supply — fixed forever. No minting. No inflation. Built for longevity.</p>
+    </div>
+    <div class="token-grid">
+      <div style="display:flex;flex-direction:column;align-items:center" class="reveal">
+        <div class="donut-wrap">
+          <svg width="280" height="280" viewBox="0 0 280 280">
+            <circle cx="140" cy="140" r="110" fill="none" stroke="rgba(42,31,14,0.5)" stroke-width="36"/>
+            <!-- Airdrop 30% -->
+            <circle cx="140" cy="140" r="110" fill="none" stroke="#c9a227" stroke-width="36" stroke-dasharray="207.3 483.7" stroke-dashoffset="0"/>
+            <!-- Presale 16.9% -->
+            <circle cx="140" cy="140" r="110" fill="none" stroke="#e8c56a" stroke-width="36" stroke-dasharray="116.7 574.3" stroke-dashoffset="-207.3"/>
+            <!-- Liquidity 20% -->
+            <circle cx="140" cy="140" r="110" fill="none" stroke="#8b6914" stroke-width="36" stroke-dasharray="138.2 552.8" stroke-dashoffset="-324"/>
+            <!-- Team 15% -->
+            <circle cx="140" cy="140" r="110" fill="none" stroke="#5a4510" stroke-width="36" stroke-dasharray="103.7 587.3" stroke-dashoffset="-462.2"/>
+            <!-- Marketing 10% -->
+            <circle cx="140" cy="140" r="110" fill="none" stroke="#3d3020" stroke-width="36" stroke-dasharray="69.1 621.9" stroke-dashoffset="-565.9"/>
+            <!-- Treasury 8.1% -->
+            <circle cx="140" cy="140" r="110" fill="none" stroke="#2a2010" stroke-width="36" stroke-dasharray="56 635" stroke-dashoffset="-635"/>
+          </svg>
+          <div class="donut-center">
+            <div class="donut-num">888M</div>
+            <div class="donut-lbl">$KOKO</div>
+          </div>
+        </div>
+        <div class="token-supply" style="width:100%;max-width:280px">
+          <div class="token-supply-num">888,888,888</div>
+          <div class="token-supply-lbl">Total Supply · Fixed · Solana SPL</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="token-items">
+          <div class="token-item">
+            <div class="token-dot" style="background:#c9a227"></div>
+            <span class="token-item-name">Airdrop</span>
+            <span class="token-item-pct">30%</span>
+            <span class="token-item-amt">266,666,666</span>
+          </div>
+          <div class="token-item">
+            <div class="token-dot" style="background:#e8c56a"></div>
+            <span class="token-item-name">Presale</span>
+            <span class="token-item-pct">16.9%</span>
+            <span class="token-item-amt">150,000,000</span>
+          </div>
+          <div class="token-item">
+            <div class="token-dot" style="background:#8b6914"></div>
+            <span class="token-item-name">Liquidity</span>
+            <span class="token-item-pct">20%</span>
+            <span class="token-item-amt">177,777,776</span>
+          </div>
+          <div class="token-item">
+            <div class="token-dot" style="background:#5a4510"></div>
+            <span class="token-item-name">Team</span>
+            <span class="token-item-pct">15%</span>
+            <span class="token-item-amt">133,333,333</span>
+          </div>
+          <div class="token-item">
+            <div class="token-dot" style="background:#3d3020"></div>
+            <span class="token-item-name">Marketing</span>
+            <span class="token-item-pct">10%</span>
+            <span class="token-item-amt">88,888,888</span>
+          </div>
+          <div class="token-item">
+            <div class="token-dot" style="background:#2a2010"></div>
+            <span class="token-item-name">Treasury</span>
+            <span class="token-item-pct">8.1%</span>
+            <span class="token-item-amt">72,000,000</span>
+          </div>
+        </div>
+        <div style="margin-top:24px;padding:16px;background:rgba(42,31,14,0.3);border-radius:10px;border:0.5px solid rgba(58,46,20,0.6)">
+          <div style="font-size:12px;color:var(--smoke);line-height:1.8">
+            🔒 Team tokens vest over 6 months<br/>
+            💧 60% of raise goes to LP at TGE<br/>
+            🚫 No minting after launch
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AIRDROP -->
+<section id="airdrop">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:16px">
+      <div class="section-eyebrow" style="justify-content:center">Airdrop</div>
+      <h2 class="section-title">Earn $KOKO Before TGE</h2>
+      <p class="section-body" style="margin:0 auto;text-align:center">266,666,666 $KOKO reserved for the village. Complete tasks, refer friends, earn your allocation. No passive income — only believers who prove themselves earn.</p>
+    </div>
+    <div class="airdrop-steps reveal">
+      <div class="step-card" data-num="1">
+        <div class="step-icon">📱</div>
+        <div class="step-title">Join Telegram</div>
+        <div class="step-body">Join the official KokoKairoku Telegram group and become part of the village.</div>
+        <span class="step-pts">+500 KP</span>
+      </div>
+      <div class="step-card" data-num="2">
+        <div class="step-icon">🐦</div>
+        <div class="step-title">Follow on X</div>
+        <div class="step-body">Follow @KokoKairoku on X and spread the signal through the regime's territory.</div>
+        <span class="step-pts">+500 KP</span>
+      </div>
+      <div class="step-card" data-num="3">
+        <div class="step-icon">🔁</div>
+        <div class="step-title">Retweet</div>
+        <div class="step-body">Retweet the pinned post. The word spreads through the forest.</div>
+        <span class="step-pts">+300 KP</span>
+      </div>
+      <div class="step-card" data-num="4">
+        <div class="step-icon">📜</div>
+        <div class="step-title">Answer Lore Question</div>
+        <div class="step-body">Prove your knowledge of Kairoku World. Only true believers know the answer.</div>
+        <span class="step-pts">+250 KP</span>
+      </div>
+      <div class="step-card" data-num="5">
+        <div class="step-icon">👥</div>
+        <div class="step-title">Refer Friends</div>
+        <div class="step-body">Earn 1,000 KP for every friend who joins and completes tasks. Cap: 75 referrals.</div>
+        <span class="step-pts">+1,000 KP / ref</span>
+      </div>
+      <div class="step-card" data-num="6">
+        <div class="step-icon">💳</div>
+        <div class="step-title">Submit Wallet</div>
+        <div class="step-body">Submit your Solana wallet to lock in your $KOKO allocation before TGE.</div>
+        <span class="step-pts">Locks allocation</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px" class="reveal">
+      <a href="https://t.me/KokoKairokuBot" target="_blank" class="btn-primary" style="display:inline-block">Start Earning →</a>
+      <span style="display:inline-block;margin:0 12px;color:var(--ash)">or</span>
+      <a href="/airdrop-checker.html" class="btn-ghost" style="display:inline-block">Check Your Allocation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:16px">
+      <div class="section-eyebrow" style="justify-content:center">Roadmap</div>
+      <h2 class="section-title">The Return of the Bloodline</h2>
+    </div>
+    <div class="roadmap-line">
+      <div class="roadmap-item active reveal">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-phase">Phase 1</div>
+        <div class="roadmap-title">Shadow Emerges</div>
+        <span class="roadmap-status status-live">LIVE NOW</span>
+        <ul class="roadmap-items">
+          <li>Shadow Phase presale — open</li>
+          <li>Airdrop bot live on Telegram</li>
+          <li>Mini App launched</li>
+          <li>Community building</li>
+        </ul>
+      </div>
+      <div class="roadmap-item reveal">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-phase">Phase 2</div>
+        <div class="roadmap-title">TGE & DEX Launch</div>
+        <span class="roadmap-status status-soon">UPCOMING</span>
+        <ul class="roadmap-items">
+          <li>Token Generation Event (TGE)</li>
+          <li>DEX listing on Raydium / Jupiter</li>
+          <li>Airdrop distribution to wallets</li>
+          <li>LP locked — 60% of raise</li>
+        </ul>
+      </div>
+      <div class="roadmap-item reveal">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-phase">Phase 3</div>
+        <div class="roadmap-title">The Reckoning</div>
+        <span class="roadmap-status status-future">PLANNED</span>
+        <ul class="roadmap-items">
+          <li>CEX listings</li>
+          <li>Koko AI agent expansion</li>
+          <li>Cross-chain bridge</li>
+          <li>Staking / utility launch</li>
+        </ul>
+      </div>
+      <div class="roadmap-item reveal">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-phase">Phase 4</div>
+        <div class="roadmap-title">Kairoku World</div>
+        <span class="roadmap-status status-future">PLANNED</span>
+        <ul class="roadmap-items">
+          <li>Full lore universe expansion</li>
+          <li>NFT collection — the villagers</li>
+          <li>Koko agent V2 — autonomous onchain actions</li>
+          <li>DAO governance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:16px">
+      <div class="section-eyebrow" style="justify-content:center">FAQ</div>
+      <h2 class="section-title">Common Questions</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What is $KOKO?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-a"><p>$KOKO is a lore-driven memecoin on Solana built around Koko — an autonomous AI agent character who is the exiled heir of the Kairoku World noble bloodline. It is the first AI agent memecoin on Solana, combining storytelling, community, and onchain utility.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What is the Shadow Phase?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-a"><p>The Shadow Phase is the first and most rewarding presale phase. Buyers receive a +30% token bonus on top of the base rate of ~1,875,000 $KOKO per 1 SOL. Minimum purchase is 0.2 SOL and maximum is 5 SOL per wallet. Once the Shadow Phase closes, the bonus drops to +20% in the Emergence Phase.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          When is TGE?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-a"><p>TGE follows the completion of the presale phases. No specific date is announced — the village will be notified via Telegram and X before it happens. The contract address will only be revealed at TGE. Any address claiming to be the CA before that is a scam.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How do I earn the airdrop?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-a"><p>Start the airdrop bot at t.me/KokoKairokuBot. Complete tasks (join Telegram, follow on X, retweet, answer the lore question) to earn Koko Points (KP). Every 10 KP = 1 $KOKO at TGE. Submit your Solana wallet to lock in your allocation. Total airdrop pool is 266,666,666 $KOKO.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is this safe? How do I know it's not a rug?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-a"><p>Team tokens vest over 6 months — the team cannot dump at launch. 60% of raised funds go directly to liquidity which will be locked. No contract address exists before TGE. The presale uses Helio MoonPay, a trusted payment processor. No admin will ever DM you asking for funds or wallet seeds.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What wallet should I use?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-a"><p>Use a Solana wallet such as Phantom, Backpack, or Solflare. Do not send from a centralized exchange (CEX) — you must use a self-custody wallet. For the airdrop, submit your Solana wallet address via the Telegram bot using /wallet.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Where can I check my airdrop allocation?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-a"><p>Use the airdrop checker at kairokuworld.xyz/airdrop-checker.html — enter your Solana wallet address or Telegram username to see your current KP balance, task completion status, and estimated $KOKO allocation.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="position:relative;overflow:hidden">
+  <div class="footer-kanji">影</div>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">
+        <img src="https://i.postimg.cc/tgTkS4ML/8e5af09c-41df-471c-9e17-d6ae16b23ae9.png" alt="Koko"/>
+        <span class="footer-brand-name">Kairoku World</span>
+      </div>
+      <p class="footer-brand-desc">The first autonomous AI agent on Solana. Born in exile. Returned in code. The regime's time is ending.</p>
+      <div class="footer-socials">
+        <a href="https://t.me/KokoKairoku" target="_blank" class="social-link" title="Telegram">✈</a>
+        <a href="https://x.com/KokoKairoku" target="_blank" class="social-link" title="X / Twitter">𝕏</a>
+        <a href="https://kairokuworld.gitbook.io/kairokuworld-docs" target="_blank" class="social-link" title="Docs">📖</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Product</div>
+      <ul>
+        <li><a href="https://t.me/KokoKairokuBot" target="_blank">Airdrop Bot</a></li>
+        <li><a href="https://t.me/KokoKairokuBot/koko" target="_blank">Mini App</a></li>
+        <li><a href="/airdrop-checker.html">Check Airdrop</a></li>
+        <li><a href="https://moonpay.hel.io/x/Kairokuworld" target="_blank">Buy $KOKO</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Learn</div>
+      <ul>
+        <li><a href="https://kairokuworld.gitbook.io/kairokuworld-docs" target="_blank">Documentation</a></li>
+        <li><a href="#lore">The Lore</a></li>
+        <li><a href="#tokenomics">Tokenomics</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Community</div>
+      <ul>
+        <li><a href="https://t.me/KokoKairoku" target="_blank">Telegram Group</a></li>
+        <li><a href="https://x.com/KokoKairoku" target="_blank">X / Twitter</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+      © 2025 Kairoku World · $KOKO on Solana<br/>
+      <span style="font-size:11px">No CA until TGE · Not financial advice · DYOR</span>
+    </div>
+    <div class="footer-bottom-right">
+      "The forest does not forget."
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── PARTICLES ──────────────────────────────────────────────────────────────
+const container = document.getElementById('particles')
+for (let i = 0; i < 30; i++) {
+  const s = document.createElement('span')
+  const size = 1 + Math.random() * 3
+  s.style.cssText = `
+    left:${Math.random()*100}%;
+    width:${size}px;height:${size}px;
+    animation-duration:${8+Math.random()*12}s;
+    animation-delay:${Math.random()*8}s;
+  `
+  container.appendChild(s)
+}
+
+// ── SCROLL REVEAL ──────────────────────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target) }
+  })
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+
+// ── FAQ ────────────────────────────────────────────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item')
+  const isOpen = item.classList.contains('open')
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'))
+  if (!isOpen) item.classList.add('open')
+}
+
+// ── MOBILE NAV ─────────────────────────────────────────────────────────────
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav')
+  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex'
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').style.display = 'none'
+}
+
+// ── NAVBAR SCROLL ──────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar')
+  nav.style.background = window.scrollY > 50
+    ? 'rgba(10,7,3,0.98)'
+    : 'rgba(10,7,3,0.85)'
+})
+</script>
+</body>
+</html>
