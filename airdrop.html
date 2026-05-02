@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$KOKO Airdrop — Kairoku World</title>
+  <meta name="description" content="Check your $KOKO airdrop allocation, rank, and points. Join the Kairoku World village.">
+  <meta property="og:title" content="$KOKO Airdrop Checker — Kairoku World">
+  <meta property="og:description" content="Check your rank and estimated $KOKO allocation. 133M tokens up for grabs.">
+  <meta property="og:image" content="https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>
+    // Pass ?user= param through to the main site checker
+    const params = new URLSearchParams(window.location.search)
+    const user = params.get('user')
+    if (user) {
+      window.location.replace('/?user=' + encodeURIComponent(user) + '#airdrop-checker')
+    } else {
+      // No user param — redirect to bot
+      window.location.replace('https://t.me/KokoKairokuBot')
+    }
+  </script>
+</head>
+<body style="margin:0;background:#0a0a0a;display:flex;align-items:center;justify-content:center;height:100vh;font-family:monospace;color:#888;font-size:12px;letter-spacing:0.1em">
+  Redirecting...
+</body>
+</html>
