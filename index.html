@@ -752,12 +752,14 @@ footer {
             <div class="char-status-dot active"></div>
             Agent Status: Active on X + Telegram
           </div>
-        </div>
         <div class="char-image">
-          <img src="https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png" alt="Koko" onerror="this.parentElement.innerHTML='<div class=\'char-image-placeholder\'>猫</div>'">
-        </div>
-        <div class="char-card-bg">影</div>
-      </div>
+  <img 
+    id="kokoCharacter"
+    src="https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png" 
+    alt="Koko"
+    onerror="this.parentElement.innerHTML='<div class=\'char-image-placeholder\'>猫</div>'"
+  >
+</div>
 
       <!-- THE EMPRESS -->
       <div class="char-card">
@@ -1288,6 +1290,48 @@ window.addEventListener('scroll', () => {
     a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--gold)' : ''
   })
 }, { passive: true })
+<script>
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === #${current} ? 'var(--gold)' : '';
+  });
+}, { passive: true });
+
+
+// 🔥 IMAGE ROTATION (ADDED CLEANLY)
+document.addEventListener("DOMContentLoaded", () => {
+  const images = [
+    "https://i.postimg.cc/LsRNZ7qR/8e5af09c-41df-471c-9e17-d6ae16b23ae9-(1).png",
+    "https://i.postimg.cc/K8Gp4jRf/file-00000000737471f4b370c47d2af6f92a.png",
+    "https://i.postimg.cc/wTsbnZnk/file-00000000d5787243ab334e57fc0fb8bd.png"
+  ];
+
+  let index = 0;
+  const imgElement = document.getElementById("kokoCharacter");
+
+  if (!imgElement) return;
+
+  setInterval(() => {
+    imgElement.style.opacity = 0;
+
+    setTimeout(() => {
+      index = (index + 1) % images.length;
+      imgElement.src = images[index];
+      imgElement.style.opacity = 1;
+    }, 300);
+
+  }, 4000);
+});
 </script>
+
 </body>
 </html>
