@@ -609,122 +609,197 @@ footer {
   .presale-box { padding: 28px 20px; }
 }
 
-/* ── SCROLL LEADERBOARD AESTHETIC ── */
-#leaderboard-wrap {
+/* ── SCROLL LEADERBOARD ── */
+.scroll-outer {
   position: relative;
-  background:
-    linear-gradient(180deg,
-      rgba(18,14,8,0.98) 0%,
-      rgba(22,18,10,0.95) 15%,
-      rgba(16,13,7,0.93) 85%,
-      rgba(18,14,8,0.98) 100%
-    ) !important;
-  border: none !important;
-  border-radius: 2px !important;
+  margin: 0 auto;
+  filter: drop-shadow(0 20px 60px rgba(0,0,0,0.9)) drop-shadow(0 0 30px rgba(150,110,40,0.15));
+}
+
+/* The rolled rod — top */
+.scroll-rod-top, .scroll-rod-bottom {
+  position: relative;
+  height: 28px;
+  background: linear-gradient(180deg,
+    #2a1f0a 0%,
+    #4a3510 20%,
+    #6b4d1a 35%,
+    #8a6525 45%,
+    #a07c2e 50%,
+    #8a6525 55%,
+    #6b4d1a 65%,
+    #4a3510 80%,
+    #2a1f0a 100%
+  );
+  border-radius: 0;
   box-shadow:
-    0 0 0 1px rgba(180,140,60,0.18),
-    0 0 0 3px rgba(10,8,4,0.9),
-    0 0 40px rgba(0,0,0,0.8),
-    inset 0 1px 0 rgba(200,168,85,0.12),
-    inset 0 -1px 0 rgba(200,168,85,0.08);
-  overflow: hidden !important;
-}
-
-/* Top scroll rod */
-#leaderboard-wrap::before {
-  content: '';
-  display: block;
-  height: 6px;
-  background: linear-gradient(90deg,
-    rgba(90,65,25,0.4) 0%,
-    rgba(200,168,85,0.35) 20%,
-    rgba(230,195,100,0.5) 50%,
-    rgba(200,168,85,0.35) 80%,
-    rgba(90,65,25,0.4) 100%
-  );
-  border-bottom: 1px solid rgba(200,168,85,0.2);
-}
-
-/* Bottom scroll rod */
-#leaderboard-wrap::after {
-  content: '';
-  display: block;
-  height: 6px;
-  background: linear-gradient(90deg,
-    rgba(90,65,25,0.4) 0%,
-    rgba(200,168,85,0.35) 20%,
-    rgba(230,195,100,0.5) 50%,
-    rgba(200,168,85,0.35) 80%,
-    rgba(90,65,25,0.4) 100%
-  );
-  border-top: 1px solid rgba(200,168,85,0.2);
-}
-
-/* Table rows — parchment stripe */
-#leaderboard-table > div {
-  border-bottom: 1px solid rgba(200,168,85,0.08) !important;
-  transition: background 0.15s ease;
-  position: relative;
-}
-#leaderboard-table > div:last-child {
-  border-bottom: none !important;
-}
-#leaderboard-table > div:not(:first-child):hover {
-  background: rgba(200,168,85,0.05) !important;
-}
-
-/* Header row */
-#leaderboard-table > div:first-child {
-  background: linear-gradient(90deg,
-    rgba(200,168,85,0.04) 0%,
-    rgba(200,168,85,0.09) 50%,
-    rgba(200,168,85,0.04) 100%
-  ) !important;
-  border-bottom: 1px solid rgba(200,168,85,0.2) !important;
-  letter-spacing: 0.18em !important;
-}
-
-/* Top + bottom content fade */
-.lb-fade-top, .lb-fade-bottom {
-  pointer-events: none;
-  position: absolute;
-  left: 0; right: 0;
-  height: 32px;
+    inset 0 2px 4px rgba(255,210,100,0.15),
+    inset 0 -2px 4px rgba(0,0,0,0.5),
+    0 4px 8px rgba(0,0,0,0.6);
   z-index: 2;
 }
-.lb-fade-top {
-  top: 6px;
-  background: linear-gradient(to bottom, rgba(18,14,8,0.7), transparent);
+.scroll-rod-top { border-radius: 3px 3px 0 0; }
+.scroll-rod-bottom { border-radius: 0 0 3px 3px; }
+
+/* Knobs on left/right of each rod */
+.scroll-rod-top::before, .scroll-rod-top::after,
+.scroll-rod-bottom::before, .scroll-rod-bottom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 36px;
+  background: radial-gradient(ellipse at 40% 35%,
+    #c8a840 0%,
+    #8a6820 40%,
+    #5a4010 70%,
+    #3a2808 100%
+  );
+  border-radius: 4px;
+  box-shadow:
+    inset 0 1px 3px rgba(255,210,80,0.3),
+    inset 0 -1px 2px rgba(0,0,0,0.6),
+    0 2px 6px rgba(0,0,0,0.7);
 }
-.lb-fade-bottom {
-  bottom: 48px;
-  background: linear-gradient(to top, rgba(18,14,8,0.7), transparent);
+.scroll-rod-top::before, .scroll-rod-bottom::before { left: -6px; }
+.scroll-rod-top::after, .scroll-rod-bottom::after { right: -6px; }
+
+/* The parchment body */
+.scroll-body {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(0,0,0,0.04) 28px,
+      rgba(0,0,0,0.04) 29px
+    ),
+    linear-gradient(180deg,
+      #1a1208 0%,
+      #1e1509 8%,
+      #161008 15%,
+      #191309 50%,
+      #161008 85%,
+      #1e1509 92%,
+      #1a1208 100%
+    );
+  border-left: 3px solid #3a2c0e;
+  border-right: 3px solid #3a2c0e;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Footer bar */
-#leaderboard-wrap > div:last-child {
-  background: linear-gradient(90deg,
-    rgba(200,168,85,0.03) 0%,
-    rgba(200,168,85,0.07) 50%,
-    rgba(200,168,85,0.03) 100%
-  ) !important;
-  border-top: 1px solid rgba(200,168,85,0.15) !important;
+/* Side shadow vignette on parchment */
+.scroll-body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,0.35) 0%,
+      transparent 8%,
+      transparent 92%,
+      rgba(0,0,0,0.35) 100%
+    ),
+    linear-gradient(180deg,
+      rgba(0,0,0,0.2) 0%,
+      transparent 6%,
+      transparent 94%,
+      rgba(0,0,0,0.2) 100%
+    );
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* Gold rank numbers for top 3 rows */
-#leaderboard-table > div:nth-child(2) { background: rgba(200,168,85,0.05) !important; }
-#leaderboard-table > div:nth-child(3) { background: rgba(160,160,160,0.03) !important; }
-#leaderboard-table > div:nth-child(4) { background: rgba(140,90,40,0.03) !important; }
-
-/* Refresh button */
-#leaderboard-wrap button {
-  color: rgba(200,168,85,0.7) !important;
-  letter-spacing: 0.14em !important;
-  font-size: 8px !important;
+/* Scroll title bar (kanji + title) */
+.scroll-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 18px 32px 14px;
+  border-bottom: 1px solid rgba(200,168,85,0.25);
+  position: relative;
+  z-index: 2;
+}
+.scroll-kanji {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 32px;
+  color: rgba(200,168,85,0.8);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(200,168,85,0.3);
+}
+.scroll-title-text {
+  text-align: center;
+}
+.scroll-title-text h3 {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
+  color: #c8a840;
+  font-weight: 400;
+  margin-bottom: 3px;
+}
+.scroll-title-text p {
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(200,168,85,0.4);
+}
+
+/* Table inside scroll */
+#leaderboard-table {
+  position: relative;
+  z-index: 2;
+}
+#leaderboard-table > div {
+  border-bottom: 1px solid rgba(200,168,85,0.1) !important;
+  transition: background 0.15s ease;
+}
+#leaderboard-table > div:last-child { border-bottom: none !important; }
+#leaderboard-table > div:not(:first-child):hover {
+  background: rgba(200,168,85,0.06) !important;
+}
+/* Header */
+#leaderboard-table > div:first-child {
+  background: rgba(200,168,85,0.07) !important;
+  border-bottom: 1px solid rgba(200,168,85,0.22) !important;
+  letter-spacing: 0.2em !important;
+}
+/* Top 3 subtle tints */
+#leaderboard-table > div:nth-child(2) { background: rgba(200,168,85,0.06) !important; }
+#leaderboard-table > div:nth-child(3) { background: rgba(180,180,180,0.03) !important; }
+#leaderboard-table > div:nth-child(4) { background: rgba(160,100,40,0.04) !important; }
+
+/* Footer inside scroll */
+.scroll-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-top: 1px solid rgba(200,168,85,0.18);
+  background: rgba(200,168,85,0.04);
+  position: relative;
+  z-index: 2;
+}
+#lb-refresh-status {
+  font-size: 9px;
+  color: rgba(200,168,85,0.45);
+  letter-spacing: 0.1em;
+}
+.scroll-footer button {
+  font-size: 8px !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase;
+  color: rgba(200,168,85,0.6) !important;
+  background: none;
+  border: none;
+  cursor: pointer;
   transition: color 0.2s;
 }
-#leaderboard-wrap button:hover { color: rgba(200,168,85,1) !important; }
+.scroll-footer button:hover { color: #c8a840 !important; }
 
 </style>
 </head>
@@ -930,14 +1005,34 @@ footer {
     </div>
 
     <!-- LIVE LEADERBOARD -->
-    <div class="section-label" style="margin-top:48px;margin-bottom:20px">Live Leaderboard — Top 10</div>
-    <div id="leaderboard-wrap" style="position:relative">
-      <div class="lb-fade-top"></div>
-      <div class="lb-fade-bottom"></div>
-      <div id="leaderboard-table" style="padding:20px;font-size:11px;color:var(--muted);letter-spacing:0.08em">Loading village records...</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:0.5px solid var(--border);background:var(--bg2)">
-        <div id="lb-refresh-status" style="font-size:9px;color:var(--muted);letter-spacing:0.08em">—</div>
-        <button onclick="refreshAll()" style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);background:none;border:none;cursor:pointer;padding:0">↻ Refresh</button>
+    <div class="scroll-outer" style="margin-top:48px">
+      <div id="leaderboard-wrap">
+        <!-- Top rod -->
+        <div class="scroll-rod-top"></div>
+
+        <!-- Parchment body -->
+        <div class="scroll-body">
+          <!-- Title -->
+          <div class="scroll-title-bar">
+            <div class="scroll-kanji">榜</div>
+            <div class="scroll-title-text">
+              <h3>Village Leaderboard</h3>
+              <p>Top Contributors of Kairoku World</p>
+            </div>
+          </div>
+
+          <!-- Live data table injected here by JS -->
+          <div id="leaderboard-table" style="font-size:11px;color:rgba(200,168,85,0.5);letter-spacing:0.08em;padding:20px">Loading village records...</div>
+
+          <!-- Footer -->
+          <div class="scroll-footer">
+            <div id="lb-refresh-status">—</div>
+            <button onclick="refreshAll()">↻ Refresh</button>
+          </div>
+        </div>
+
+        <!-- Bottom rod -->
+        <div class="scroll-rod-bottom"></div>
       </div>
     </div>
 
